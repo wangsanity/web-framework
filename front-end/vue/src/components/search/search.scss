@@ -1,0 +1,20 @@
+.com-search{
+  display: inline-flex;
+  justify-content: flex-start;
+  align-items: center;
+
+  .search-item {
+    margin-bottom: 5px;
+
+    .search-label {
+      display: inline-block;
+      padding-right: 5px;
+    }
+  
+    .search-control {
+      display: inline-block;
+      margin-right: 10px;
+      width: 150px;
+    }
+  }
+}

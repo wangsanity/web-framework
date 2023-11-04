@@ -1,0 +1,73 @@
+@import '@/styles/colors.scss';
+
+.login-view{
+  width: 100%;
+  min-height: 450px;
+  overflow: auto;
+  background-color: $loginBg;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $mainBg;
+
+  .form-container {
+    z-index: 2;
+    color: $mainBg;
+    -webkit-box-shadow: 0 0 1px 1px $loginBorder;
+    -moz-box-shadow: 0 0 1px 1px $loginBorder;
+    box-shadow: 0 0 5px 3px $loginBorder;
+    border: solid 1px $loginBorder;
+    border-radius: 5px;
+    position: relative;
+
+    &-content {
+      padding: 30px 40px;
+      z-index: 2;
+      position: relative;
+      background-color: transparent!important;
+      min-width: 420px;
+    }
+
+    &-bg {
+      opacity: 0.1;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 1;
+      background-color: $loginBorder;
+    }
+
+    .login-form {
+      margin: auto 20px;
+    }
+
+    .button-row {
+      margin-top: 15px;
+      text-align: center;
+      .ctr-button {
+        margin: 10px 5px;
+      }
+    }
+
+    .slogan {
+      font-size: 18px;
+      padding-bottom: 20px;
+      text-align: left;
+    }
+  }
+
+  .copyright {
+    position: absolute;
+    bottom: 8px;
+    font-size: 12px;
+    color: $textGray;
+    text-align: center;
+    left: 0;
+    right: 0;
+    &:hover{
+      color: $mainBg;
+    }
+  }
+}

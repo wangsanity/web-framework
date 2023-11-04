@@ -1,0 +1,19 @@
+@import './colors.scss';
+@import './common.scss';
+@import './layout.scss';
+@import './form.scss';
+
+html,
+body {
+    height: 100%;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    font-size: 14px;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}

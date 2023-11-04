@@ -1,0 +1,109 @@
+{
+  "count": 4,
+  "list": [
+    {
+      "roleId": "1",
+      "name": "IT staffs",
+      "order": 1,
+      "users": [
+        {
+          "userId": "1",
+          "name": "Administrator"
+        },
+        {
+          "userId": "3",
+          "name": "Test"
+        }
+      ],
+      "lastUpdate": "2016-12-11 11:12:32"
+    },
+    {
+      "roleId": "2",
+      "name": "Developer",
+      "order": 2,
+      "users": [
+        {
+          "userId": "2",
+          "name": "Guest"
+        },
+        {
+          "userId": "3",
+          "name": "Test"
+        }
+      ],
+      "lastUpdate": "2016-12-11 11:12:32"
+    },
+    {
+      "roleId": "3",
+      "name": "QA",
+      "order": 3,
+      "users": [
+        {
+          "userId": "3",
+          "name": "Test"
+        }
+      ],
+      "lastUpdate": "2016-12-11 11:12:32"
+    },
+    {
+      "roleId": "4",
+      "name": "Manager",
+      "order": 4,
+      "users": [
+        {
+          "userId": "1",
+          "name": "Administrator"
+        }
+      ],
+      "lastUpdate": "2016-12-11 11:12:32"
+    },
+    {
+      "roleId": "5",
+      "name": "QA group 2",
+      "order": 5,
+      "users": [
+        {
+          "userId": "3",
+          "name": "Test"
+        }
+      ],
+      "lastUpdate": "2016-12-11 11:12:32"
+    },
+    {
+      "roleId": "6",
+      "name": "Manager group 2",
+      "order": 6,
+      "users": [
+        {
+          "userId": "1",
+          "name": "Administrator"
+        }
+      ],
+      "lastUpdate": "2016-12-11 11:12:32"
+    },
+    {
+      "roleId": "7",
+      "name": "QA group 3",
+      "order": 7,
+      "users": [
+        {
+          "userId": "3",
+          "name": "Test"
+        }
+      ],
+      "lastUpdate": "2016-12-11 11:12:32"
+    },
+    {
+      "roleId": "8",
+      "name": "Manager group 3",
+      "order": 8,
+      "users": [
+        {
+          "userId": "1",
+          "name": "Administrator"
+        }
+      ],
+      "lastUpdate": "2016-12-11 11:12:32"
+    }
+  ]
+}

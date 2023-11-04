@@ -1,0 +1,109 @@
+@import '@/styles/colors.scss';
+
+.ctr-tree-child {
+  position: relative;
+  margin-left: 18px;
+
+  .ctr-tree-node {
+    margin-top: 3px;
+    position: relative;
+
+    .expand-icon {
+      margin-right: 5px;
+    }
+
+    .node-checkbox {
+      margin-right: 5px;
+      margin-left: 2px;
+      position: relative;
+      top: 1px;
+    }
+
+    &-name {
+      white-space: nowrap;
+      display: flex;
+      align-items: center;
+
+      &-item {
+        display: inline-block;
+        cursor: pointer;
+        color: $textMediumColor;
+
+        >a,
+        >span {
+          color: $main;
+          display: inline-block;
+          padding: 3px;
+        }
+      }
+
+      &-text {
+        .node-text-wrapper {
+          display: inline-block;
+          padding: 3px;
+
+          &:hover {
+            background-color: $textBgGray;
+          }
+        }
+
+        a {
+          color: $main;
+          text-decoration: none;
+        }
+      }
+
+      &-selected .node-text-wrapper {
+        font-weight: 800;
+      }
+    }
+
+    .ctr-tree-node-icon {
+      margin-right: -5px;
+    }
+
+    .leaf-with-parent {
+      padding-left: 15px;
+
+      .node-checkbox {
+        margin-left: 1px;
+      }
+    }
+
+    &-children {
+      margin-left: 18px;
+    }
+  }
+
+  .theme-white {
+    color: $mainBg;
+
+    .ctr-tree-node {
+      &-name {
+        &-item {
+          color: $mainBg;
+
+          a,
+          span {
+            color: $mainBg;
+          }
+        }
+
+        a {
+          color: $mainBg;
+          text-decoration: none;
+        }
+
+        &-text {
+          &:hover {
+            background-color: $textMediumColor;
+          }
+        }
+
+        &-selected {
+          background-color: $rowHoverBg;
+        }
+      }
+    }
+  }
+}

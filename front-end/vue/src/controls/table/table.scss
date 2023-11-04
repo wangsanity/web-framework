@@ -1,0 +1,119 @@
+@import '@/styles/colors.scss';
+
+.ctr-table {
+    overflow: auto;
+
+    .table-border {
+        border: solid 1px $border;
+    }
+
+    thead {
+        background-color: $textBgGray;
+    }
+
+    thead.simple-header {
+        background-color: transparent;
+        border-bottom: solid 1px $border;
+    }
+
+    thead>tr>th {
+        padding: 7px 8px;
+    }
+
+    .table {
+        width: 100%;
+    }
+
+    .table>thead>tr>th,
+    .table>tbody>tr>td,
+    .table>tfoot>tr>td {
+        border: none;
+        text-align: left;
+    }
+
+    .table>tbody>tr>td {
+        padding: 8px;
+        text-align: left;
+        white-space: normal;
+
+        a {
+            cursor: pointer;
+        }
+    }
+
+    .table>tbody>tr {
+        &:hover {
+            background-color: $rowHoverBg;
+        }
+    }
+
+    .normal-font>thead>tr>th {
+        font-weight: normal;
+    }
+
+    .link-style {
+        cursor: pointer;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+
+    .icon-box img {
+        width: 20px;
+        height: 20px;
+    }
+
+    .button-column {
+        width: 10px;
+        white-space: nowrap !important;
+    }
+
+    .link-button {
+        margin: auto 5px;
+    }
+
+    .loading {
+        text-align: center;
+        padding: 30px 15px;
+
+        img {
+            height: 24px;
+            width: 24px;
+        }
+    }
+
+    .no-data {
+        text-align: center;
+        padding: 30px 15px;
+        font-size: 14px;
+    }
+
+    .align-center {
+
+        td,
+        th {
+            text-align: center !important;
+        }
+    }
+
+    .align-left {
+
+        td,
+        th {
+            text-align: center !important;
+        }
+    }
+
+    .align-right {
+
+        td,
+        th {
+            text-align: center !important;
+        }
+    }
+
+    .even-row {
+        background-color: $evenRowBg;
+    }
+}

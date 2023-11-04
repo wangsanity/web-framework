@@ -1,0 +1,29 @@
+#!/bin/bash
+
+NORMALCOLOR="\\033[0;39m"
+GREENCOLOR="\\033[1;32m"
+REDCOLOR="\\033[1;31m"
+echoGREEN() {
+  echo -e "$GREENCOLOR" "$1" "$NORMALCOLOR"
+}
+
+echoRED() {
+  echo -e "$REDCOLOR" "$1" "$NORMALCOLOR"
+}
+
+MSG="$1"
+#MATCH="(?s)(.{4,}[\r\n]Type:(\s*| )?(refactor|test|feat|fix|perf|doc)[\r\n]Jiras:(\s*| )?((PRODUCTS|SYSDEV|LOCSRV|LTESYS|SRD|WIFI|MCU|SLBL|GNSS|SYSTOOL)-[0-9]{1,}(, )?){1,}([\r\n].*)?)"
+# link ticket number if needed
+TYPES="refactor|test|feat|fix|perf|doc|infra|ci"
+SCOPES="vue|react|java|python|dotnet|nestjs|mysql|postgresql|project"
+MATCH="^($TYPES){1,1}\(($SCOPES)\):(.)+$"
+value=$(cat $MSG)
+
+if ! echo "$value" | grep -E "$MATCH" ; then
+    echoRED "Please follow the commit message rules"
+    echoRED $MATCH
+    echo "Example:"
+    echo "feat(react): init"
+    echo "Your message: $value"
+    exit 1
+fi

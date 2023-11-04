@@ -1,0 +1,110 @@
+@import '@/styles/colors.scss';
+
+.ctr-city-picker {
+  display: inline-block;
+  position: relative;
+  text-align: left;
+  width: 100%;
+  .display-slot {
+    text-align: left;
+  }
+
+  .city-slot-wrapper {
+    display: inline-block;
+    width: 100%;
+  }
+
+  .city-picker-content {
+    position: absolute;
+    background-color: $mainBg;
+    z-index: 10;
+  }
+
+  .city-picker-wrapper {
+    border: solid 1px $border;
+    border-radius: 4px;
+    display: inline-block;
+    width: 100%;
+    .tool-bar{
+      width: 100%;
+      box-sizing: border-box;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      padding: 4px;
+      border-top: solid 1px $border;
+      .link-button {
+        margin: 0 5px;
+        display: inline-block;
+      }
+    }
+    .title-box{
+      border-bottom: solid 1px $border;
+      padding: 5px 0;
+      margin-bottom: 5px;
+      display: flex;
+      justify-content: space-around;
+    }
+    .data-title {
+      text-align: center;
+      font-weight: bold;
+      font-size: 13px;
+      box-sizing: border-box;
+      display: inline-block;
+    }
+    .province-title {
+      width: 30%;
+    }
+    .city-title {
+      width: 40%;
+    }
+    .town-title {
+      width: 40%;
+    }
+    .data-area {
+      text-align: center;
+      font-size: 13px;
+      display: flex;
+      justify-content: space-around;
+      align-items: flex-start;
+      height: 120px;
+      .item-box {
+        padding: 5px 0;
+        margin: 0 8px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        cursor: pointer;
+
+        &:hover {
+          background-color: $border;
+        }
+      }
+      .province-box {
+        display: inline-block;
+        width: 35%;
+        height: 100%;
+        overflow-y: auto;
+        box-sizing: border-box;
+      }
+      .city-box {
+        display: inline-block;
+        width: 35%;
+        height: 100%;
+        overflow-y: auto;
+        box-sizing: border-box;
+      }
+      .area-box {
+        display: inline-block;
+        width: 40%;
+        height: 100%;
+        overflow-y: auto;
+        box-sizing: border-box;
+      }
+      .selected-item {
+        font-weight: bold;
+        color: $textBlueBright;
+      }
+    }
+  }
+}

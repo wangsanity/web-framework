@@ -1,0 +1,22 @@
+.com-user-list{
+  text-align: center;
+
+  .search-toolbar-wrapper {
+    text-align: left;
+    margin-bottom: 10px;
+  }
+
+  .search-wrapper {
+    margin-right: 15px;
+  }
+
+  .toolbar-wrapper {
+    display: inline-flex;
+    position: relative;
+  }
+
+  .page-bar-wrapper {
+    text-align: left;
+    margin-top: 5px;
+  }
+}

@@ -1,0 +1,13 @@
+.ctr-checkbox {
+  display: inline-block;
+  position: relative;
+  white-space: nowrap;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+
+  .checkbox-text {
+    white-space: normal;
+    margin-left: 3px;
+  }
+}

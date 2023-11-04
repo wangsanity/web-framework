@@ -1,0 +1,27 @@
+@import '@/styles/colors.scss';
+
+.ctr-tool-bar {
+  text-align: right;
+  margin: 5px 0;
+
+  .button-box {
+    margin-right: 8px;
+    cursor: pointer;
+
+    .fa {
+      margin-right: 2px;
+    }
+
+    &:hover {
+      color: $textHover;
+    }
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+
+  .button-text {
+    margin-left: 2px;
+  }
+}

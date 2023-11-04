@@ -1,0 +1,24 @@
+@import '@/styles/colors.scss';
+
+.ctr-popup-menu {
+  display: inline-block;
+  position: relative;
+  text-align: left;
+
+  .display-slot {
+    text-align: left;
+  }
+
+  .slot-wrapper {
+    display: inline-block;
+  }
+
+  .popup-content {
+    padding: 5px 0;
+    border-radius: 4px;
+    border: solid 1px $border;
+    position: absolute;
+    background-color: $mainBg;
+    z-index: 10;
+  }
+}

@@ -1,0 +1,42 @@
+#!/usr/bin/env bash
+
+# If any command fails, exit immediately with that command's exit status
+set -eo pipefail
+
+NORMALCOLOR="\\033[0;39m"
+GREENCOLOR="\\033[1;32m"
+REDCOLOR="\\033[1;31m"
+echoGREEN() {
+  echo -e "$GREENCOLOR" "$1" "$NORMALCOLOR"
+}
+
+echoRED() {
+  echo -e "$REDCOLOR" "$1" "$NORMALCOLOR"
+}
+
+# prevent committing to main branch
+branch="$(git rev-parse --abbrev-ref HEAD)"
+forbiddenBranch="main"
+
+if [ "$branch" = "$forbiddenBranch" ]; then
+  echoRED "You can't commit directly to the $forbiddenBranch branch"
+  exit 1
+fi
+
+# run vue checks
+if [ -f "front-end/vue/githooks/pre-commit" ]; then
+    echo "run front-end/vue/githooks/pre-commit"
+    front-end/vue/githooks/pre-commit
+fi
+
+CHANGED_FILES=$(git diff --name-only --cached --diff-filter=ACMR)
+ROOT_FOLDER=$(git rev-parse --show-toplevel)
+
+# run front-end/vue checks
+if [[ $CHANGED_FILES == *"front-end/vue/"* ]]
+then
+    echo "run front-end/vue eslint"
+    cd $ROOT_FOLDER/front-end/vue
+    npm run lint
+    echoGREEN "run front-end/vue eslint passed"
+fi
