@@ -1,0 +1,220 @@
+{
+  "count": 100,
+  "list": [
+    {
+      "userId": "1",
+      "loginName": "admin",
+      "fullName": "张三",
+      "department": "市场部",
+      "birthday": "1990-10-12",
+      "cellphone": "13688886666",
+      "email": "email@email.com",
+      "remark": "备注",
+      "roles": "管理员; 系统维护人员;",
+      "address": "河北省邯郸市大名县",
+      "addressCode": 130425,
+      "roleList": [
+        {
+          "roleId": "1",
+          "name": "系统维护人员"
+        },
+        {
+          "roleId": "2",
+          "name": "开发"
+        }
+      ]
+    },
+    {
+      "userId": "1",
+      "loginName": "admin",
+      "fullName": "张三",
+      "department": "市场部",
+      "birthday": "1990-10-12",
+      "cellphone": "13688886666",
+      "email": "email@email.com",
+      "remark": "",
+      "roles": "管理员; 系统维护人员;",
+      "roleList": [
+        {
+          "roleId": "1",
+          "name": "系统维护人员"
+        },
+        {
+          "roleId": "2",
+          "name": "开发"
+        }
+      ]
+    },
+    {
+      "userId": "1",
+      "loginName": "admin",
+      "fullName": "张三",
+      "department": "市场部",
+      "birthday": "1990-10-12",
+      "cellphone": "13688886666",
+      "email": "email@email.com",
+      "remark": "",
+      "roles": "管理员; 系统维护人员;",
+      "roleList": [
+        {
+          "roleId": "1",
+          "name": "系统维护人员"
+        },
+        {
+          "roleId": "2",
+          "name": "开发"
+        }
+      ]
+    },
+    {
+      "userId": "1",
+      "loginName": "admin",
+      "fullName": "张三",
+      "department": "市场部",
+      "birthday": "1990-10-12",
+      "cellphone": "13688886666",
+      "email": "email@email.com",
+      "remark": "",
+      "roles": "管理员; 系统维护人员;",
+      "roleList": [
+        {
+          "roleId": "1",
+          "name": "系统维护人员"
+        },
+        {
+          "roleId": "2",
+          "name": "开发"
+        }
+      ]
+    },
+    {
+      "userId": "1",
+      "loginName": "admin",
+      "fullName": "张三",
+      "department": "市场部",
+      "birthday": "1990-10-12",
+      "cellphone": "13688886666",
+      "email": "email@email.com",
+      "remark": "",
+      "roles": "管理员; 系统维护人员;",
+      "roleList": [
+        {
+          "roleId": "1",
+          "name": "系统维护人员"
+        },
+        {
+          "roleId": "2",
+          "name": "开发"
+        }
+      ]
+    },
+    {
+      "userId": "1",
+      "loginName": "admin",
+      "fullName": "张三",
+      "department": "市场部",
+      "birthday": "1990-10-12",
+      "cellphone": "13688886666",
+      "email": "email@email.com",
+      "remark": "",
+      "roles": "管理员; 系统维护人员;",
+      "roleList": [
+        {
+          "roleId": "1",
+          "name": "系统维护人员"
+        },
+        {
+          "roleId": "2",
+          "name": "开发"
+        }
+      ]
+    },
+    {
+      "userId": "1",
+      "loginName": "admin",
+      "fullName": "张三",
+      "department": "市场部",
+      "birthday": "1990-10-12",
+      "cellphone": "13688886666",
+      "email": "email@email.com",
+      "remark": "",
+      "roles": "管理员; 系统维护人员;",
+      "roleList": [
+        {
+          "roleId": "1",
+          "name": "系统维护人员"
+        },
+        {
+          "roleId": "2",
+          "name": "开发"
+        }
+      ]
+    },
+    {
+      "userId": "1",
+      "loginName": "admin",
+      "fullName": "张三",
+      "department": "市场部",
+      "birthday": "1990-10-12",
+      "cellphone": "13688886666",
+      "email": "email@email.com",
+      "remark": "",
+      "roles": "管理员; 系统维护人员;"
+    },
+    {
+      "userId": "1",
+      "loginName": "admin",
+      "fullName": "张三",
+      "department": "市场部",
+      "birthday": "1990-10-12",
+      "cellphone": "13688886666",
+      "email": "email@email.com",
+      "remark": "",
+      "roles": "管理员; 系统维护人员;"
+    },
+    {
+      "userId": "1",
+      "loginName": "admin",
+      "fullName": "张三",
+      "department": "市场部",
+      "birthday": "1990-10-12",
+      "cellphone": "13688886666",
+      "email": "email@email.com",
+      "remark": "",
+      "roles": "管理员; 系统维护人员;"
+    },
+    {
+      "userId": "1",
+      "loginName": "admin",
+      "fullName": "张三",
+      "department": "市场部",
+      "birthday": "1990-10-12",
+      "cellphone": "13688886666",
+      "email": "email@email.com",
+      "remark": "",
+      "roles": "管理员; 系统维护人员;"
+    },
+    {
+      "userId": "1",
+      "loginName": "admin",
+      "fullName": "张三",
+      "department": "市场部",
+      "birthday": "1990-10-12",
+      "cellphone": "13688886666",
+      "email": "email@email.com",
+      "remark": "",
+      "roles": "管理员; 系统维护人员;"
+    },
+    {
+      "userId": "1",
+      "loginName": "admin",
+      "fullName": "张三",
+      "department": "市场部",
+      "birthday": "1990-10-12",
+      "cellphone": "13688886666",
+      "email": "email@email.com",
+      "remark": "",
+      "roles": "管理员; 系统维护人员;"
+    }
+  ]
+}

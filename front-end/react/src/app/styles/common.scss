@@ -1,0 +1,178 @@
+@import './colors.scss';
+
+/* margin, padding start */
+.margin-l{
+  margin: 20px;
+}
+
+.margin {
+  margin: 15px;
+}
+
+.margin-m {
+  margin: 10px;
+}
+
+.margin-s {
+  margin: 5px;
+}
+
+.margin-top {
+  margin-top: 15px;
+}
+
+.margin-top-m {
+  margin-top: 10px;
+}
+
+.margin-top-s {
+  margin-top: 5px;
+}
+
+.margin-right {
+  margin-right: 15px;
+}
+
+.margin-right-m {
+  margin-right: 10px;
+}
+
+.margin-right-s {
+  margin-bottom: 5px;
+}
+
+.margin-bottom {
+  margin-bottom: 15px;
+}
+
+.margin-bottom-m {
+  margin-bottom: 10px;
+}
+
+.margin-bottom-s {
+  margin-bottom: 5px;
+}
+
+.margin-left {
+  margin-bottom: 15px;
+}
+
+.margin-left-m {
+  margin-bottom: 10px;
+}
+
+.margin-left-s {
+  margin-bottom: 5px;
+}
+
+.no-margin{
+  margin: 0!important;
+}
+
+.padding-top {
+  padding-top: 15px;
+}
+
+.padding-top-m {
+  padding-top: 10px;
+}
+
+.padding-top-s {
+  padding-top: 5px;
+}
+
+.padding-right {
+  padding-right: 15px;
+}
+
+.padding-right-m {
+  padding-right: 10px;
+}
+
+.padding-right-s {
+  padding-right: 5px;
+}
+
+.padding-bottom {
+  padding-bottom: 15px;
+}
+
+.padding-bottom-m {
+  padding-bottom: 10px;
+}
+
+.padding-bottom-s {
+  padding-right: 5px;
+}
+
+.padding-left {
+  padding-left: 15px;
+}
+
+.padding-left-m {
+  padding-left: 10px;
+}
+
+.padding-left-s {
+  padding-right: 5px;
+}
+
+.padding-l {
+  padding: 20px;
+}
+
+.padding {
+  padding: 15px;
+}
+
+.padding-m {
+  padding: 10px;
+}
+
+.padding-s {
+  padding: 5px;
+}
+/* margin, padding end */
+
+.full-screen-abs {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.input-error {
+  border: solid 1px $error!important;
+}
+
+.text-ellipsis {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.link-button {
+  display: inline-block;
+  color: $textBlueBright;
+  cursor: pointer;
+  &:hover {
+      color: $textHover;
+  }
+}
+
+.hidden {
+  display: none;
+}
+
+@keyframes popupAnimation {
+  0% {
+      transform: scale3d(0.5, 0.5, 0.5);
+      opacity: 0;
+  }
+  100% {
+      transform: scale3d(1, 1, 1);
+      animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      opacity: 1;
+  }
+}

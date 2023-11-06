@@ -1,0 +1,11 @@
+{
+  "userId": "1",
+  "loginName": "admin",
+  "fullName": "Colin Wang",
+  "department": "Marketing",
+  "birthday": "1990-10-12",
+  "cellphone": "136****6666",
+  "email": "email@email.com",
+  "remark": "comment here",
+  "roles": "administrator; IT;"
+}

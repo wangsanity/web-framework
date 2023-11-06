@@ -1,0 +1,19 @@
+.loading-box {
+    text-align: center;
+    line-height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0.7;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent !important;
+}
+
+.position-absolute {
+    position: absolute;
+}

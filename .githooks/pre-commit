@@ -40,3 +40,12 @@ then
     npm run lint
     echoGREEN "run front-end/vue eslint passed"
 fi
+
+# run front-end/react checks
+if [[ $CHANGED_FILES == *"front-end/react/"* ]]
+then
+    echo "run front-end/react eslint"
+    cd $ROOT_FOLDER/front-end/react
+    yarn lint
+    echoGREEN "run front-end/react eslint passed"
+fi

@@ -7,8 +7,9 @@
     margin: 0;
     list-style-type: none;
     color: $line;
+    white-space: nowrap;
 
-    li {
+    > span {
       box-sizing: border-box;
       height: 36px;
       line-height: 36px;

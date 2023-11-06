@@ -1,0 +1,90 @@
+@import '../../styles/colors.scss';
+
+.ctr-dialog {
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  overflow: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .dialog-bg {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+    background-color: $semiBg;
+    opacity: 0.5;
+  }
+
+  .dialog-body {
+    position: relative;
+    background-color: $mainBg;
+    border-radius: 4px;
+    min-width: 200px;
+    z-index: 2;
+
+    animation: fadeleftIn .4s;
+    animation-name: popIn;
+  }
+
+  .dialog-content {
+    max-height: calc(90vh - 80px);
+    padding: 15px;
+    text-align: center;
+    overflow: auto;
+  }
+
+  .no-title-body {
+    margin-top: 5px;
+    padding: 15px;
+  }
+
+  .dialog-title {
+    position: relative;
+    min-height: 30px;
+    padding: 8px 10px 8px 10px;
+    text-align: left;
+    font-size: 13px;
+    text-transform: capitalize;
+    color: $main;
+    border-bottom: solid 1px $border;
+  }
+
+  .fa-close {
+    position: absolute;
+    right: 2px;
+    top: 2px;
+    font-size: 18px;
+    cursor: pointer;
+    z-index: 3;
+    color: $textMediumColor;
+  }
+
+  .dialog-footer {
+    padding: 7px 10px;
+    text-align: center;
+
+    .ctr-button {
+      margin: auto 3px;
+    }
+  }
+
+  @keyframes popIn {
+    0% {
+      transform: scale3d(0.5, 0.5, 0.5);
+      opacity: 0;
+    }
+
+    100% {
+      transform: scale3d(1, 1, 1);
+      animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      opacity: 1;
+    }
+  }
+}

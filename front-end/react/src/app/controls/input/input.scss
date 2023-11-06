@@ -1,0 +1,47 @@
+@import '../../styles/colors.scss';
+
+.ctr-input {
+  display: inline-block;
+  position: relative;
+  width: 100%;
+
+  .control-input {
+    display: inline-block;
+    width: 100%;
+    padding: 8px 8px;
+    font-size: 14px;
+    color: $main;
+    background-color: $mainBg;
+    background-image: none;
+    border: 1px solid $formBorder;
+    border-radius: 4px;
+
+    &:focus {
+      border-color: $formFocus;
+      outline: 0;
+      -webkit-box-shadow: 0 0 4px $textBlueBright;
+      box-shadow: 0 0 4px $textBlueBright;
+    }
+  }
+
+  .input-error {
+    border: solid 1px $error !important;
+  }
+
+  .error-message {
+    display: inline-block;
+    position: absolute;
+    left: 2px;
+    top: 35px;
+    color: $error;
+    white-space: normal;
+    font-size: 12px;
+  }
+
+  .fa-close {
+    position: absolute;
+    font-size: 14px;
+    right: 3px;
+    top: 9px;
+  }
+}

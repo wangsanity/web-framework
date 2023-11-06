@@ -28,18 +28,18 @@
                   :target="header.urlTarget ? header.urlTarget : '_parent'">{{ item[String(header.field)] }}</a>
               </div>
               <div :class="header.rowClass"
-                v-if="!header.urlBase && !header.bindHtml && !header.click && (header.format === 'datetime' || header.format === 'date')">
+                v-if="!header.urlBase && !header.bindHtml && !header.click && (header.dataType === 'datetime' || header.dataType === 'date')">
                 {{ formatDate(item[String(header.field)], header.format || (header.format === 'date' ? 'yyyy-MM-dd' :
                   'yyyy-MM-dd hh:mm:ss')) }}
               </div>
               <div :class="header.rowClass"
-                v-if="!header.urlBase && !header.bindHtml && header.click && header.format !== 'date' && header.format !== 'datetime'">
+                v-if="!header.urlBase && !header.bindHtml && header.click && header.dataType !== 'date' && header.dataType !== 'datetime'">
                 <a class="link-button" @click="header.click(item)">{{ (header.maxLength && item[String(header.field)] &&
                   item[String(header.field)].length > header.maxLength) ? item[String(header.field)].substr(0,
                     header.maxLength) + '...' : item[String(header.field)] }}</a>
               </div>
               <div :class="header.rowClass"
-                v-if="!header.urlBase && !header.bindHtml && !header.click && !header.image && header.format !== 'date' && header.format !== 'datetime'">
+                v-if="!header.urlBase && !header.bindHtml && !header.click && !header.image && header.dataType !== 'date' && header.dataType !== 'datetime'">
                 {{ (header.maxLength && item[String(header.field)] &&
                   item[String(header.field)].length > header.maxLength) ? item[String(header.field)].substr(0,
                     header.maxLength) + '...' : item[String(header.field)] }}

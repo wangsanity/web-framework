@@ -1,0 +1,42 @@
+@import '../../styles/colors.scss';
+
+.ctr-popup-menu {
+  display: inline-block;
+  position: relative;
+  text-align: left;
+
+  .display-slot {
+    text-align: left;
+  }
+
+  .slot-wrapper {
+    display: inline-block;
+  }
+
+  .list-wrapper {
+    padding: 5px 0;
+    border-radius: 4px;
+    border: solid 1px $border;
+    position: absolute;
+    background-color: $mainBg;
+    z-index: 10;
+
+    .list-item {
+      padding: 6px 10px;
+      font-size: 13px;
+      text-align: left;
+      max-width: 300px;
+      white-space: nowrap;
+      cursor: pointer;
+
+      &-text {
+        color: $main;
+        text-decoration: none;
+      }
+
+      &:hover {
+        background-color: $textBgGray;
+      }
+    }
+  }
+}

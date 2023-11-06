@@ -27,12 +27,12 @@ export default defineComponent({
   methods: {
     updatePosition() {
       setTimeout(() => {
-        const slot: any = document.getElementById(this.slotWrapperId) || {};
+        const slot = document.getElementById(this.slotWrapperId);
         const position: string = ((this.$props as any).position || this.getAutoPosition()).split(
           '-'
         );
         this.styles = {
-          [position[0] || 'top']: slot.offsetHeight + 3 + 'px',
+          [position[0] || 'top']: ((slot ? slot.offsetHeight : 0) + 3) + 'px',
           [position[1] || 'left']: 0
         };
       });

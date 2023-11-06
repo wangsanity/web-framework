@@ -1,0 +1,13 @@
+@import '../../styles/colors.scss';
+
+.ctr-tree {
+  position: relative;
+
+  .tree-root {
+    margin-left: 0;    
+  }
+
+  & > .ctr-tree-child {
+    margin-left: 0;
+  }
+}
