@@ -1,13 +1,16 @@
 'use client';
-import Image from 'next/image'
-import styles from './page.module.css'
-import { Button, CityPicker } from './controls'
+import Image from 'next/image';
+import styles from './page.module.css';
+import { Button, CityPicker } from '../controls';
 
 export default function Home() {
   return (
     <main className={styles.main}>
       <div className={styles.description}>
-      <Button>Good</Button><CityPicker><input /></CityPicker>
+        <Button>Good</Button>
+        <CityPicker>
+          <input />
+        </CityPicker>
         <p>
           Get started by editing&nbsp;
           <code className={styles.code}>src/app/page.tsx</code>
@@ -94,5 +97,5 @@ export default function Home() {
         </a>
       </div>
     </main>
-  )
+  );
 }

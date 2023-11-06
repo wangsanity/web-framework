@@ -1,0 +1,17 @@
+.com-user-profile{
+  text-align: center;
+  padding-bottom: 20px;
+  padding-right: 20px;
+
+  .user-profile {
+    display: grid;
+    align-items: center;
+    grid-template-columns: 1fr 1fr;
+    grid-row-gap: 12px;
+    font-size: 14px;
+  }
+
+  .form-label {
+    white-space: nowrap;
+  }
+}
