@@ -1,6 +1,5 @@
 import type { Authorization, UserToken } from '../models';
 import { LocalDataService } from '../utils';
-// import { useUserStore } from '../stores';
 
 export class BaseInfoService {
   static clearUser() {
@@ -16,8 +15,6 @@ export class BaseInfoService {
     if (user) {
       try {
         user.token = '';
-        // const userStore = useUserStore();
-        // userStore.setUserToken(null);
         LocalDataService.cookieSet('userInfo', JSON.stringify(user));
       } catch (ex) {
         console.log(ex);
@@ -25,8 +22,8 @@ export class BaseInfoService {
     }
   }
 
-  static getUser() {
-    return LocalDataService.cookieGet('userInfo');
+  static getUser(): UserToken {
+    return LocalDataService.cookieGet('userInfo') as UserToken;
   }
 
   static getValidUser() {
@@ -51,8 +48,6 @@ export class BaseInfoService {
       fullName: userData.fullName,
       token: userData.token
     };
-    // const userStore = useUserStore();
-    // userStore.setUserToken(userData);
     LocalDataService.cookieSet('userInfo', JSON.stringify(userInfo));
   }
 

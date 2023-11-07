@@ -1,18 +1,20 @@
 'use client';
 import React, { useState } from 'react';
+import { useRouter } from 'next/navigation';
 import { Button, Input } from '../../controls';
-import { TextService, ToastService } from '../../utils';
+import { ToastService } from '../../utils';
 import { UserBusiness, BaseInfoService } from '../../business';
+import { routeNames } from '../../router';
+import { UserToken } from '../../models';
+import { useAppContext } from '@/contexts/app-context';
 import './login.scss';
-// import { useLocation, useNavigate } from 'react-router';
-// import { routeNames } from '../router';
 
-export default function Login() {
-  // const navigate = useNavigate();
-  // const location = useLocation();
-  const controlsText = TextService.controls;
-  const messagesText = TextService.messages;
-  const [loading, setLoading] = useState(false);
+export const Login = () => {
+  const router = useRouter();
+  const appContext = useAppContext();
+  const controlsText = appContext.controlsText;
+  const messagesText = appContext.messagesText;
+  const [isLoading, setIsLoading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [password, setPassword] = useState('');
   const [userName, setUserName] = useState(
@@ -20,23 +22,20 @@ export default function Login() {
   );
 
   const login = () => {
-    if (loading) {
+    if (isLoading) {
       return;
     }
 
-    setLoading(true);
+    setIsLoading(true);
     setSubmitted(true);
     UserBusiness.login(userName, password)
-      .then(() => {
-        setLoading(false);
-        // if (location.state?.redirectUrl) {
-        //   window.location.href = location.state.redirectUrl;
-        // } else {
-        //   navigate(routeNames.home);
-        // }
+      .then((userToken) => {
+        appContext.setUserToken(userToken as UserToken);
+        setIsLoading(false);
+        router.push(routeNames.home);
       })
       .catch((err) => {
-        setLoading(false);
+        setIsLoading(false);
         ToastService.notify(err.message || err, 'error');
       });
   };
@@ -59,7 +58,11 @@ export default function Login() {
                 value={userName}
                 onChange={(e) => setUserName(e.target.value)}
                 placeholder={controlsText.userName}
-                errorMessage={messagesText.required(controlsText.userName)}
+                errorMessage={
+                  messagesText.required
+                    ? messagesText.required(controlsText.userName)
+                    : ''
+                }
                 showError={submitted && !userName}
               ></Input>
             </span>
@@ -69,18 +72,22 @@ export default function Login() {
                 type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                onKeyUp={(e) => e.keyCode === 13 && login()}
+                onKeyUp={(e) => e.key === 'Enter' && login()}
                 placeholder={controlsText.password}
-                errorMessage={messagesText.required(controlsText.password)}
+                errorMessage={
+                  messagesText.required
+                    ? messagesText.required(controlsText.password)
+                    : ''
+                }
                 showError={submitted && !password}
               ></Input>
             </span>
           </div>
           <div className="button-row">
-            <Button state={loading ? 3 : 1} onClick={() => login()}>
+            <Button state={isLoading ? 3 : 1} onClick={() => login()}>
               {controlsText.login}
             </Button>
-            <Button state={loading ? 2 : 1} onClick={reset}>
+            <Button state={isLoading ? 2 : 1} onClick={reset}>
               {controlsText.reset}
             </Button>
           </div>
@@ -90,4 +97,6 @@ export default function Login() {
       <div className="copyright">{messagesText.copyright}</div>
     </div>
   );
-}
+};
+
+export default Login;

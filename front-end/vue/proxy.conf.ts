@@ -11,7 +11,7 @@ const PROXY_CONFIG_PROD = {
   }
 };
 
-const PROXY_CONFIG_LOCAL = {
+const PROXY_CONFIG_MOCK = {
   '/api': {
     target: 'http://localhost:5173/',
     secure: false,
@@ -57,10 +57,10 @@ const PROXY_CONFIG_LOCAL = {
       });
     }
   }
-};
+};console.log(['mock'].indexOf(String(process.env.API_ENV)) > -1);
 
-if (['prod', 'production'].indexOf(String(process.env.API_ENV)) > -1) {
-  module.exports = PROXY_CONFIG_PROD;
+if (['mock'].indexOf(String(process.env.API_ENV)) > -1) {
+  module.exports = PROXY_CONFIG_MOCK;
 } else {
-  module.exports = PROXY_CONFIG_LOCAL;
+  module.exports = PROXY_CONFIG_PROD;
 }

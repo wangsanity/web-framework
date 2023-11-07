@@ -303,7 +303,7 @@ export const Table = ({
 
   const loadingElement = !isLoading ? null : (
     <div className="loading">
-      <Image src="../../assets/images/loading.gif" alt="" />
+      <Image src="/assets/images/loading.gif" width={20} height={20} alt="" />
     </div>
   );
 

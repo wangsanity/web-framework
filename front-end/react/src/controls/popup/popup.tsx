@@ -44,10 +44,10 @@ export const Popup = ({
       setShowPopup(false);
     };
 
-    document.body.addEventListener('click', onClickBody);
+    window.addEventListener('click', onClickBody);
 
     return () => {
-      document.body.removeEventListener('click', onClickBody);
+      window.removeEventListener('click', onClickBody);
     };
   }, [updatePosition]);
 

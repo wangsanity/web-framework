@@ -1,0 +1,97 @@
+@import '../../styles/colors.scss';
+
+.menus-wrapper {
+  .top-menu {
+    padding: 5px 6px;
+    border-bottom: solid 1px $border;
+    color: $textBlueBright;
+
+    &-button {
+      cursor: pointer;
+
+      a {
+        margin-left: 3px;
+        color: $textBlueBright;
+        text-decoration: none;
+
+        &:hover {
+          color: $textHover;
+        }
+      }
+    }
+
+    .fa-home {
+      font-size: 16px;
+      margin-right: 2px;
+      color: $textBlueBright;
+    }
+  }
+
+  .menus-box {
+    display: flex;
+    padding: 5px;
+    justify-content: stretch;
+    align-items: flex-start;
+  }
+
+  .menus-container {
+    width: 100%;
+    border: solid 1px $border;
+    border-radius: 4px;
+
+    .menu-item {
+      border-bottom: solid 1px $border;
+
+      .menu-item-name {
+        font-size: 14px;
+        background-color: $textBgGray;
+        padding: 7px 6px 7px 3px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        cursor: pointer;
+
+        .menu-icon {
+          width: 20px;
+          margin-right: 2px;
+          text-align: center;
+        }
+
+        .fa-folder-o {
+          color: $textMediumColor;
+          margin-right: 2px;
+        }
+
+        .fa-sort-desc {
+          position: relative;
+          bottom: 2px;
+        }
+
+        .menu-item-text {
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          width: 120px;
+
+          &:hover {
+            color: $textHover;
+          }
+        }
+
+        .menu-selected {
+          color: $textHover;
+        }
+      }
+
+      .sub-items {
+        padding: 12px 10px;
+        overflow: auto;
+        max-width: 100%;
+      }
+
+      &:last-child {
+        border-bottom: none;
+      }
+    }
+  }
+}

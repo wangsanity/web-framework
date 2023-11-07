@@ -9,13 +9,13 @@ npm install
 ### Run in mock data mode, any user name and password can login
 
 ```sh
-npm run dev
+npm run mock
 ```
 
-### Run in api mode, proxy is configured in proxy.conf.ts file
+### Run in development mode
 
 ```sh
-npm run dev:server
+npm run dev
 ```
 
 ### Type-Check, Compile and Minify for Production

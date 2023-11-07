@@ -10,4 +10,4 @@ export * from './loading/loading';
 export * from './page-bar/page-bar';
 export * from './popup-menu/popup-menu';
 export * from './table/table';
-export * from './tree/tree';
+export * from './tree';

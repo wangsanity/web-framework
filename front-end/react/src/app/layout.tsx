@@ -1,24 +1,118 @@
-import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
-import './globals.css';
+'use client';
+import React, { useCallback, useEffect, useState } from 'react';
+import { BaseInfoService } from '../business';
+import { TextService } from '../utils';
+import { useRouter, usePathname } from 'next/navigation';
+import { Menus } from './_menus/menus';
+import { routeNames } from '../router';
+import { PopupMenu, PopupMenuItem } from '../controls';
+import { AppWrapper, useAppContext } from '../contexts/app-context';
+import Image from 'next/image';
 import '../styles/app.scss';
 import '../styles/vendor.scss';
-
-const inter = Inter({ subsets: ['latin'] });
-
-export const metadata: Metadata = {
-  title: 'Next Web Framework',
-  description: '',
-};
+import './layout.scss';
+import { UserToken } from '@/models';
 
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const router = useRouter();
+  const pathname = usePathname();
+  const appContext = useAppContext();
+  const messagesText = appContext.messagesText;
+  const [userToken, setUserToken] = useState<UserToken>();
+  const [userMenus, setUserMenus] = useState<PopupMenuItem[]>([]);
+  const [languages, setLanguages] = useState<PopupMenuItem[]>([]);
+  const [currentLanguage, setCurrentLanguage] = useState('');
+
+  const init = useCallback(() => {
+    setCurrentLanguage(TextService.languageObject?.text);
+    setLanguages(
+      TextService.controls.languages.map((item) => {
+        return {
+          name: item.text,
+          click: () => {
+            setCurrentLanguage(item.text);
+            TextService.setLanguage(item.name, item.text);
+          },
+        };
+      })
+    );
+
+    setUserMenus([
+      { name: TextService.controls.userProfile, url: routeNames.userProfile },
+      {
+        name: TextService.controls.logout,
+        click: () => {
+          BaseInfoService.clearToken();
+          BaseInfoService.clearAuthorization();
+          router.push(routeNames.login);
+        },
+      },
+    ]);
+  }, [router]);
+
+  useEffect(() => {
+    init();
+  }, [init]);
+
+  useEffect(() => {
+    const token = BaseInfoService.getUser();
+    appContext.setControlsText(TextService.controls);
+    appContext.setMessagesText(TextService.messages);
+    appContext.setUserToken(token);
+    setUserToken(token);
+  }, [appContext]);
+
   return (
-    <html lang="en">
-      <body className={inter.className}>{children}</body>
+    <html>
+      <body>
+        <AppWrapper>
+          {pathname === routeNames.login ? (
+            children
+          ) : (
+            <div className="layout-box">
+              <div className="navigation">
+                <span className="navigation-left">
+                  <i className="fa fa-bicycle"></i>
+                  <span className="site-name">{messagesText.siteName}</span>
+                </span>
+                <span className="navigation-right">
+                  <span className="language-wrapper">
+                    <PopupMenu items={languages} position="top-left">
+                      <span className="display-name">{currentLanguage}</span>
+                      <i className="fa fa-sort-desc"></i>
+                    </PopupMenu>
+                  </span>
+                  <PopupMenu items={userMenus} position="top-right">
+                    <span className="display-name" suppressHydrationWarning>
+                      {userToken?.loginName}
+                    </span>
+                    <i className="fa fa-sort-desc"></i>
+                  </PopupMenu>
+                  <Image
+                    className="icon-head"
+                    width={26}
+                    height={26}
+                    src={'/assets/images/male.png'}
+                    alt=""
+                  />
+                </span>
+              </div>
+              <div className="main">
+                <div className="main-left">
+                  <Menus />
+                </div>
+                <div className="router-view-wrapper">
+                  <div className="router-view">{children}</div>
+                </div>
+              </div>
+            </div>
+          )}
+        </AppWrapper>
+      </body>
     </html>
   );
 }

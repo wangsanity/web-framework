@@ -2,7 +2,7 @@ import { BaseInfoService } from '../base-info.service';
 import { TextService } from '../../utils';
 import { SERVERINFO } from '../../constants/app-info';
 import type { HttpOptions } from '../../models';
-import router from '../../router';
+import { routeNames } from '../../router';
 import axios from 'axios';
 
 export class HttpRequestService {
@@ -98,7 +98,7 @@ export class HttpRequestService {
     }
     HttpRequestService._redirected = true;
     if (window.location.href.toLowerCase().indexOf('login') === -1) {
-      router.push({ name: 'login', params: { url: window.location.href } });
+      window.location.href = window.location.origin + routeNames.login;
       return;
     }
   }

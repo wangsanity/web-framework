@@ -9,7 +9,7 @@ export const ENUSMESSAGES: IMessages = {
   passwordMismatch: 'New passwords are different',
   invalidParameters: 'Invalid parameters',
   unauthorized: 'Sorry, you are unauthorized to visit this page.',
-  notFound: 'Not found.',
+  notFound: 'Not found',
   succeeded: 'Succeeded',
   required: (name: string | string[]) =>
     typeof name === 'string'

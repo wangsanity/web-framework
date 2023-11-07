@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "vite",
-    "dev:server": "export API_ENV=prod && vite",
+    "mock": "export API_ENV=mock && vite",
     "build": "run-p type-check \"build-only {@}\" --",
     "postbuild": "./infra/copyFiles.sh",
     "preview": "vite preview",

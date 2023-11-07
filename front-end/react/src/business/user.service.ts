@@ -57,7 +57,7 @@ export class UserBusiness {
     return HttpRequestService.post(options);
   }
 
-  static saveRoles(userId: string, roles: string[]): Promise<void> {
+  static saveRoles(userId: number, roles: number[]): Promise<void> {
     const options: HttpOptions = {
       url: apis.saveRoles + '/' + userId,
       body: roles
@@ -91,7 +91,7 @@ export class UserBusiness {
     return HttpRequestService.put(options);
   }
 
-  static login(userName: string, password: string): Promise<ValidationResults | void> {
+  static login(userName: string, password: string): Promise<ValidationResults | UserToken> {
     const message = getRequiredMessagePromise(
       [userName, password],
       [TextService.controls.userName, TextService.controls.password]
@@ -111,6 +111,7 @@ export class UserBusiness {
     return HttpRequestService.post(options).then((data: UserToken) => {
       BaseInfoService.setUser(data);
       BaseInfoService.setAuthorization(data.authorizationList);
+      return data;
     });
   }
 
@@ -161,7 +162,7 @@ export class UserBusiness {
 
   static validate(item: User): Promise<ValidationResults> | null {
     let message = getRequiredMessagePromise(
-      [item.loginName, item.fullName || ''],
+      [String(item.loginName), item.fullName || ''],
       [TextService.controls.loginName, TextService.controls.fullName]
     );
 

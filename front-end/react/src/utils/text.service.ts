@@ -20,14 +20,14 @@ export class TextService {
 
   static getLanguage(): Language {
     const langObject = LocalDataService.localStorageGet('language');
-    if (!langObject) {
-      // let langName: string =
-      //   window?.navigator.language ||
-      //   (window as any)?.navigator['browserLanguage'] ||
-      //   (window as any)?.navigator['userLanguage'] ||
-      //   (window as any)?.navigator['systemLanguage'];
-      // langName = langName.substring(0, 2).toLowerCase();
-      // langName = langName === 'en' || langName.indexOf('en-') > -1 ? 'en-us' : 'zh-cn';
+    if (!langObject && typeof window !== 'undefined') {
+      let langName: string =
+        window?.navigator.language ||
+        (window as any)?.navigator['browserLanguage'] ||
+        (window as any)?.navigator['userLanguage'] ||
+        (window as any)?.navigator['systemLanguage'];
+      langName = langName.substring(0, 2).toLowerCase();
+      langName = langName === 'en' || langName.indexOf('en-') > -1 ? 'en-us' : 'zh-cn';
       return { name: 'en-us', text: languages['en-us'] };
     }
     return langObject as Language;
@@ -103,6 +103,6 @@ export class TextService {
     if (!this.language) {
       this.language = this.getLanguage();
     }
-    return this.language.name;
+    return this.language?.name;
   }
 }

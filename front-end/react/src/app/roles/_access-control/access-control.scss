@@ -1,0 +1,31 @@
+@import '../../../styles/colors.scss';
+
+.com-access-control{
+  position: relative;
+  width: 100%;
+  min-height: 30px;
+  min-width: 30px;
+  overflow: auto;
+
+  .link-button-row {
+    margin-bottom: 10px;
+    text-align: left;
+
+    .link-button {
+      margin-right: 10px;
+      color: $main;
+      text-decoration: underline;
+      &:hover {
+        color: $textHover;
+      }
+    }
+  }
+
+  .button-row {
+    margin: 15px auto 0 10px;
+  }
+
+  .ctr-button {
+    margin: 0 3px;
+  }
+}
