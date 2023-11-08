@@ -8,7 +8,7 @@ import { UserEdit } from './_user-edit/user-edit';
 import { User } from '../../models';
 import './users.scss';
 
-export const Users = () => {
+export default function Users() {
   const controlsText = TextService.controls;
   const messagesText = TextService.messages;
   const [deleting, setDeleting] = useState(false);
@@ -90,7 +90,7 @@ export const Users = () => {
       <ComUserList
         buttons={getTableButtons()}
         showToolbar={true}
-        toolbarEvent={onToolbarClick.bind(this)}
+        toolbarEvent={onToolbarClick}
       ></ComUserList>
       <Dialog
         visible={editDialogVisible}
@@ -101,13 +101,13 @@ export const Users = () => {
         <UserEdit
           cancelEvent={() => setEditDialogVisible(false)}
           item={currentItem}
-          saveEvent={onSave.bind(this)}
+          saveEvent={onSave}
         ></UserEdit>
       </Dialog>
       <ConfirmDialog
         visible={confirmDialogVisible}
         isLoading={deleting}
-        onOk={onDelete.bind(this)}
+        onOk={onDelete}
         onClose={() => setConfirmDialogVisible(false)}
         onCancel={() => setConfirmDialogVisible(false)}
       >
@@ -117,7 +117,7 @@ export const Users = () => {
         visible={resetDialogVisible}
         isLoading={resettingPassword}
         title={controlsText.resetPassword}
-        onOk={onResetPassword.bind(this)}
+        onOk={onResetPassword}
         onClose={() => setResetDialogVisible(false)}
         onCancel={() => setResetDialogVisible(false)}
       >
@@ -125,6 +125,4 @@ export const Users = () => {
       </ConfirmDialog>
     </div>
   );
-};
-
-export default Users;
+}

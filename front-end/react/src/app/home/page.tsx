@@ -4,7 +4,7 @@ import { SystemBusiness } from '../../business';
 import { StringService } from '../../utils';
 import './home.scss';
 
-export const Home = () => {
+export default function Home() {
   const [readMeContent, setReadMeContent] = useState<string[]>([]);
 
   useEffect(() => {
@@ -26,6 +26,4 @@ export const Home = () => {
       </div>
     </div>
   );
-};
-
-export default Home;
+}

@@ -1,4 +1,14 @@
-import { TreeNodeItem } from './tree-node/tree-node';
+export interface TreeNodeItem {
+  name: string;
+  url?: string;
+  children?: TreeNodeItem[];
+  id?: string;
+  icon?: string;
+  iconColor?: string;
+  expanded?: boolean;
+  checked?: boolean;
+  selected?: boolean;
+}
 
 export const setCheckStatus = (
   nodes: TreeNodeItem[] = [],

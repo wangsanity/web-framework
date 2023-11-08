@@ -9,7 +9,7 @@ import { UserToken } from '../../models';
 import { useAppContext } from '@/contexts/app-context';
 import './login.scss';
 
-export const Login = () => {
+export default function Login() {
   const router = useRouter();
   const appContext = useAppContext();
   const controlsText = appContext.controlsText;
@@ -97,6 +97,4 @@ export const Login = () => {
       <div className="copyright">{messagesText.copyright}</div>
     </div>
   );
-};
-
-export default Login;
+}

@@ -2,12 +2,8 @@ import React from 'react';
 import './403.scss';
 import { TextService } from '../../utils';
 
-export const Unauthorized = () => {
+export default function Unauthorized() {
   return (
-    <div className="unauthorized-view">
-      {TextService.messages.unauthorized}
-    </div>
+    <div className="unauthorized-view">{TextService.messages.unauthorized}</div>
   );
 }
-
-export default Unauthorized;

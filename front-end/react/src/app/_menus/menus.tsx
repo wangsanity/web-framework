@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { Tree, deselectItems, checkPath } from '../../controls';
 import { SystemBusiness } from '../../business';
 import { usePathname } from 'next/navigation';
-import { TreeNodeItem } from '../../controls/tree/tree-node/tree-node';
-import Link from 'next/link';
+import { TreeNodeItem } from '../../controls';
 import { useAppContext } from '@/contexts/app-context';
+import Link from 'next/link';
 import './menus.scss';
 
 export const Menus = () => {

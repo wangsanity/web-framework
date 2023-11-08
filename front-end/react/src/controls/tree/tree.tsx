@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { deselectItems } from './tree-helper';
-import { TreeNodeItem, TreeNode } from './tree-node/tree-node';
+import { TreeNodeItem, deselectItems } from './tree-helper';
+import { TreeNode } from './tree-node/tree-node';
 import './tree.scss';
 
 export interface TreeProps {

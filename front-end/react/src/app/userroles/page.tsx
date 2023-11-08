@@ -8,7 +8,7 @@ import { TableButton, TableColumn } from '@/controls/table/table.interface';
 import { UserRole } from '../../models';
 import './user-roles.scss';
 
-export const UserRoles = () => {
+export default function UserRoles() {
   const controlsText = TextService.controls;
   const [tableButtons, setTableButtons] = useState<TableButton[]>([]);
   const [columns, setColumns] = useState<TableColumn[]>([]);
@@ -67,6 +67,4 @@ export const UserRoles = () => {
       </Dialog>
     </div>
   );
-};
-
-export default UserRoles;
+}

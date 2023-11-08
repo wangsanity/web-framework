@@ -1,12 +1,11 @@
-import React, { useCallback, useContext, useEffect, useState } from 'react';
-import PropTypes from 'prop-types';
+import React, { useCallback, useEffect, useState } from 'react';
 import { Table, PageBar, Dialog, Toolbar, PageOptions } from '../../controls';
 import { ComSearch, ComUserProfile } from '..';
 import { UserBusiness } from '../../business';
-import './user-list.scss';
 import { TextService } from '../../utils';
 import { TableButton, TableColumn } from '../../controls/table/table.interface';
-import { QueryFilters, User, UserList } from '@/app/models';
+import { QueryFilters, User, UserList } from '../../models';
+import './user-list.scss';
 
 export interface ComUserListProps {
   toolbarEvent?: (type: string) => void;

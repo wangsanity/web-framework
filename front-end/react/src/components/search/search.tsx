@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { Button, Input } from '../../controls';
 import { TextService } from '../../utils';
+import { QueryFilters } from '../../models';
 import './search.scss';
-import { QueryFilters } from '@/app/models';
 
 export interface ComSearchProps {
   searchEvent?: (queryFilters: QueryFilters) => void;

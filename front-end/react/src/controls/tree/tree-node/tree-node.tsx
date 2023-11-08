@@ -1,19 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { setCheckStatus } from '../tree-helper';
+import { TreeNodeItem, setCheckStatus } from '../tree-helper';
 import './tree-node.scss';
 import Link from 'next/link';
-
-export interface TreeNodeItem {
-  name: string;
-  url?: string;
-  children?: TreeNodeItem[];
-  id?: string;
-  icon?: string;
-  iconColor?: string;
-  expanded?: boolean;
-  checked?: boolean;
-  selected?: boolean;
-}
 
 export interface TreeNodeProps {
   showCheckbox?: boolean;

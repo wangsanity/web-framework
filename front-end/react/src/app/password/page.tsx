@@ -5,7 +5,7 @@ import { UserBusiness } from '../../business';
 import { TextService, ToastService } from '../../utils';
 import './password.scss';
 
-export const Password = () => {
+export default function Password() {
   const controlsText = TextService.controls;
   const messagesText = TextService.messages;
   const [isLoading, setIsLoading] = useState(false);
@@ -86,6 +86,4 @@ export const Password = () => {
       </div>
     </div>
   );
-};
-
-export default Password;
+}

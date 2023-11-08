@@ -29,9 +29,9 @@ const apis = {
 };
 
 export class UserBusiness {
-  static get(id: string): Promise<User> {
+  static get(id: number): Promise<User> {
     const options: HttpOptions = {
-      url: getApi(id)
+      url: getApi(String(id))
     };
     return HttpRequestService.get(options);
   }

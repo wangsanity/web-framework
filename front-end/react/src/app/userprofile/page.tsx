@@ -7,7 +7,7 @@ import { TextService, ToastService } from '../../utils';
 import { User } from '../../models';
 import './user-profile.scss';
 
-export const UserProfile = () => {
+export default function UserProfile() {
   const messagesText = TextService.messages;
   const [isLoading, setIsLoading] = useState(false);
   const [userInfo, setUserInfo] = useState<User>();
@@ -17,7 +17,7 @@ export const UserProfile = () => {
 
     const localUser = BaseInfoService.getUser();
     if (localUser) {
-      UserBusiness.get(localUser.userId)
+      UserBusiness.get(Number(localUser.userId))
         .then((user: User) => {
           setIsLoading(false);
           setUserInfo(user);
@@ -45,6 +45,4 @@ export const UserProfile = () => {
       )}
     </div>
   );
-};
-
-export default UserProfile;
+}

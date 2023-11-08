@@ -17,7 +17,7 @@ import { QueryFilters, Role, RoleList } from '../../models';
 import { TableButton, TableColumn } from '@/controls/table/table.interface';
 import './roles.scss';
 
-export const Roles = () => {
+export default function Roles() {
   const controlsText = TextService.controls;
   const messagesText = TextService.messages;
   const [tableButtons, setTableButtons] = useState<TableButton[]>([]);
@@ -149,11 +149,8 @@ export const Roles = () => {
   return (
     <div className="roles-view">
       <div className="search-toolbar-wrapper">
-        <ComSearch
-          isLoading={searching}
-          searchEvent={onSearch.bind(this)}
-        ></ComSearch>
-        <Toolbar clickEvent={onToolbarClick.bind(this)}></Toolbar>
+        <ComSearch isLoading={searching} searchEvent={onSearch}></ComSearch>
+        <Toolbar clickEvent={onToolbarClick}></Toolbar>
       </div>
       <div>
         <Table
@@ -178,13 +175,13 @@ export const Roles = () => {
         <RoleEdit
           cancelEvent={() => setDialogVisible(false)}
           item={editingItem}
-          saveEvent={onSave.bind(this)}
+          saveEvent={onSave}
         ></RoleEdit>
       </Dialog>
       <ConfirmDialog
         visible={confirmDialogVisible}
         isLoading={deleting}
-        onOk={onDelete.bind(this)}
+        onOk={onDelete}
         onClose={() => setConfirmDialogVisible(false)}
         onCancel={() => setConfirmDialogVisible(false)}
       >
@@ -198,7 +195,7 @@ export const Roles = () => {
         showCancelButton={true}
         okButtonText={controlsText.save}
         onClose={() => setAccessControlDialogVisible(false)}
-        onOk={onSaveAccessControl.bind(this)}
+        onOk={onSaveAccessControl}
         onCancel={() => setAccessControlDialogVisible(false)}
       >
         <AccessControl
@@ -216,6 +213,4 @@ export const Roles = () => {
       </Dialog>
     </div>
   );
-};
-
-export default Roles;
+}
