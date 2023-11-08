@@ -19,17 +19,19 @@ export const RolesEdit = ({ item, cancelEvent, saveEvent }: RolesEditProps) => {
   const [list, setList] = useState<Role[]>([]);
 
   const setCheckBox = useCallback(() => {
-    if (list?.length > 0 && editingItem.roleList) {
-      let target;
-      editingItem.roleList.forEach((item: Role) => {
-        target = list.find((role) => role.roleId === item.roleId);
-        if (target) {
-          target.checked = true;
-        }
+    if (editingItem.roleList) {
+      setList((l) => {
+        let target;
+        (editingItem.roleList || []).forEach((item: Role) => {
+          target = l.find((role) => role.roleId === item.roleId);
+          if (target) {
+            target.checked = true;
+          }
+        });
+        return [...l];
       });
-      setList([...list]);
     }
-  }, [list, editingItem]);
+  }, [editingItem]);
 
   const getList = useCallback(() => {
     setIsLoading(true);

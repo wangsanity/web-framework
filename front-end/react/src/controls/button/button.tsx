@@ -1,4 +1,3 @@
-
 import React, { ButtonHTMLAttributes, DetailedHTMLProps } from 'react';
 import Image from 'next/image';
 import './button.scss';
@@ -30,14 +29,12 @@ export const Button = ({
       <button
         type="button"
         disabled={state > 1 ? true : false}
-        className={
-          'btn btn-' +
-          state +
-          ' control-button ' +
-          (size ? 'btn-' + size : '') +
-          ' ' +
-          className
-        }
+        className={[
+          'btn',
+          role ? 'btn-' + role : '',
+          'control-button',
+          size ? 'btn-' + size : '',
+        ].join(' ')}
         onClick={(e) => onClick && onClick(e)}
         {...props}
       >

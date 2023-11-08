@@ -26,7 +26,6 @@ export const ComUserList = ({
   instance,
 }: ComUserListProps) => {
   const { controlsText } = useAppContext();
-  const [tableOptions] = useState({ buttons: buttons || [] });
   const [tableColumns] = useState(
     columns?.length
       ? columns
@@ -127,7 +126,7 @@ export const ComUserList = ({
         <Table
           data={list}
           columns={tableColumns}
-          options={tableOptions}
+          options={{ buttons: buttons || [] }}
           isLoading={loading}
         ></Table>
       </div>

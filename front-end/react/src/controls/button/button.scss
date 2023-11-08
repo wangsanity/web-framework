@@ -51,11 +51,11 @@
   .btn-secondary {
     color: $btnSecondary;
     background-color: $btnSecondaryBg;
-    border-color: $btnSecondaryBg;
+    border-color: $border;
 
     &:hover {
       background-color: $btnSecondaryBgHover;
-      border-color: $btnSecondaryBg;
+      border-color: $border;
     }
   }
 
