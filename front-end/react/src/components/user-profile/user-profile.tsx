@@ -1,6 +1,7 @@
 import React from 'react';
 import { User } from '../../models';
-import { FormatService, TextService } from '../../utils';
+import { FormatService } from '../../utils';
+import { useAppContext } from '../../contexts/app-context';
 import './user-profile.scss';
 
 export interface ComUserProfileProps {
@@ -8,7 +9,7 @@ export interface ComUserProfileProps {
 }
 
 export const ComUserProfile = ({ item }: ComUserProfileProps) => {
-  const controlsText = TextService.controls;
+  const { controlsText } = useAppContext();
 
   if (!item) {
     return null;

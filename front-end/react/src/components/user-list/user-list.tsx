@@ -2,9 +2,9 @@ import React, { useCallback, useEffect, useState } from 'react';
 import { Table, PageBar, Dialog, Toolbar, PageOptions } from '../../controls';
 import { ComSearch, ComUserProfile } from '..';
 import { UserBusiness } from '../../business';
-import { TextService } from '../../utils';
 import { TableButton, TableColumn } from '../../controls/table/table.interface';
 import { QueryFilters, User, UserList } from '../../models';
+import { useAppContext } from '../../contexts/app-context';
 import './user-list.scss';
 
 export interface ComUserListProps {
@@ -25,7 +25,7 @@ export const ComUserList = ({
   showToolbar,
   instance,
 }: ComUserListProps) => {
-  const controlsText = TextService.controls;
+  const { controlsText } = useAppContext();
   const [tableOptions] = useState({ buttons: buttons || [] });
   const [tableColumns] = useState(
     columns?.length

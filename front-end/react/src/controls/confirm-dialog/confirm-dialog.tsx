@@ -1,6 +1,6 @@
 import React from 'react';
 import { Dialog } from '..';
-import { TextService } from '../../utils';
+import { useAppContext } from '@/contexts/app-context';
 
 export interface ConfirmDialogProps {
   visible?: boolean;
@@ -22,13 +22,15 @@ export const ConfirmDialog = ({
   title,
   showOkButton = true,
   showCancelButton = true,
-  okButtonText = TextService.controls.confirm,
-  cancelButtonText = TextService.controls.cancel,
+  okButtonText,
+  cancelButtonText,
   onOk,
   onCancel,
   onClose,
   isLoading,
 }: ConfirmDialogProps) => {
+  const { controlsText } = useAppContext();
+
   return (
     <Dialog
       visible={visible}
@@ -36,8 +38,8 @@ export const ConfirmDialog = ({
       isLoading={isLoading}
       showOkButton={showOkButton}
       showCancelButton={showCancelButton}
-      okButtonText={okButtonText}
-      cancelButtonText={cancelButtonText}
+      okButtonText={okButtonText || controlsText.confirm}
+      cancelButtonText={cancelButtonText || controlsText.cancel}
       onOk={onOk}
       onCancel={onCancel}
       onClose={onClose}

@@ -3,12 +3,13 @@ import React, { useCallback, useEffect, useState } from 'react';
 import { ComUserProfile } from '../../components';
 import { Loading } from '../../controls';
 import { BaseInfoService, UserBusiness } from '../../business';
-import { TextService, ToastService } from '../../utils';
+import { ToastService } from '../../utils';
+import { useAppContext } from '../../contexts/app-context';
 import { User } from '../../models';
 import './user-profile.scss';
 
 export default function UserProfile() {
-  const messagesText = TextService.messages;
+  const { messagesText } = useAppContext();
   const [isLoading, setIsLoading] = useState(false);
   const [userInfo, setUserInfo] = useState<User>();
 

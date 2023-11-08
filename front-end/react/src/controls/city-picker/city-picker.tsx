@@ -4,10 +4,15 @@
  *  will improve to support different levels.
  * position format: vertical-horizontal. e.g. top-left
  */
-import React, { ReactNode, useCallback, useEffect, useState } from 'react';
+import React, {
+  ReactNode,
+  useCallback,
+  useEffect,
+  useState,
+} from 'react';
 import { Provinces, Cities, Areas } from './data';
+import { useAppContext } from '@/contexts/app-context';
 import './city-picker.scss';
-import { TextService } from '../../utils';
 
 interface Province {
   name: string;
@@ -53,10 +58,11 @@ export const CityPicker = ({
   position,
   children,
   width,
-  confirmButtonText = TextService.controls.confirm,
-  cancelButtonText = TextService.controls.cancel,
+  confirmButtonText,
+  cancelButtonText,
   addressCode,
 }: CityPickerProps) => {
+  const { controlsText } = useAppContext();
   const allProvinces = Provinces;
   const allCityies = Cities;
   const allAreas = Areas;
@@ -219,21 +225,14 @@ export const CityPicker = ({
         {children}
       </div>
       {!displayPopup ? null : (
-        <div
-          className="city-picker-content"
-          style={styleObject}
-        >
+        <div className="city-picker-content" style={styleObject}>
           <div className="city-picker-wrapper">
             <div className="title-box">
               <div className="data-title province-title">
-                {TextService.controls.province}
+                {controlsText.province}
               </div>
-              <div className="data-title city-title">
-                {TextService.controls.city}
-              </div>
-              <div className="data-title town-title">
-                {TextService.controls.town}
-              </div>
+              <div className="data-title city-title">{controlsText.city}</div>
+              <div className="data-title town-title">{controlsText.town}</div>
             </div>
             <div className="data-area">
               <div className="province-box">
@@ -287,14 +286,16 @@ export const CityPicker = ({
                 ))}
               </div>
             </div>
-            {!autoClose && <div className="tool-bar">
-              <span className="link-button" onClick={() => onConfirm()}>
-                {confirmButtonText}
-              </span>
-              <span className="link-button" onClick={() => onCancel()}>
-                {cancelButtonText}
-              </span>
-            </div>}
+            {!autoClose && (
+              <div className="tool-bar">
+                <span className="link-button" onClick={() => onConfirm()}>
+                  {confirmButtonText || controlsText.confirm}
+                </span>
+                <span className="link-button" onClick={() => onCancel()}>
+                  {cancelButtonText || controlsText.cancel}
+                </span>
+              </div>
+            )}
           </div>
         </div>
       )}

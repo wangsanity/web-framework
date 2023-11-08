@@ -2,12 +2,12 @@
 import React, { useState } from 'react';
 import { Button, Input } from '../../controls';
 import { UserBusiness } from '../../business';
-import { TextService, ToastService } from '../../utils';
+import { ToastService } from '../../utils';
+import { useAppContext } from '../../contexts/app-context';
 import './password.scss';
 
 export default function Password() {
-  const controlsText = TextService.controls;
-  const messagesText = TextService.messages;
+  const { controlsText, messagesText } = useAppContext();
   const [isLoading, setIsLoading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [originalPassword, setOriginalPassword] = useState('');
@@ -47,9 +47,10 @@ export default function Password() {
               type="password"
               onChange={(e) => setOriginalPassword(e.target.value)}
               placeholder={controlsText.originalPassword}
-              errorMessage={messagesText.required(
-                controlsText.originalPassword
-              )}
+              errorMessage={
+                messagesText.required &&
+                messagesText.required(controlsText.originalPassword)
+              }
               showError={submitted && !originalPassword}
             ></Input>
           </span>
@@ -59,7 +60,10 @@ export default function Password() {
               type="password"
               onChange={(e) => setNewPassword(e.target.value)}
               placeholder={controlsText.newPassword}
-              errorMessage={messagesText.required(controlsText.newPassword)}
+              errorMessage={
+                messagesText.required &&
+                messagesText.required(controlsText.newPassword)
+              }
               showError={submitted && !newPassword}
             ></Input>
           </span>
@@ -70,7 +74,10 @@ export default function Password() {
               onChange={(e) => setPasswordConfirm(e.target.value)}
               onKeyUp={(e) => e.key === 'Enter' && onSave()}
               placeholder={controlsText.passwordConfirm}
-              errorMessage={messagesText.required(controlsText.passwordConfirm)}
+              errorMessage={
+                messagesText.required &&
+                messagesText.required(controlsText.passwordConfirm)
+              }
               showError={submitted && !passwordConfirm}
             ></Input>
           </span>

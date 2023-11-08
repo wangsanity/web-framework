@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { Button, Input } from '../../../controls';
 import { RoleBusiness } from '../../../business';
-import { ToastService, TextService } from '../../../utils';
+import { ToastService } from '../../../utils';
+import { useAppContext } from '../../../contexts/app-context';
 import { Role } from '../../../models';
 import './role-edit.scss';
 
@@ -12,8 +13,7 @@ export interface RoleEditProps {
 }
 
 export const RoleEdit = ({ item = {}, saveEvent, cancelEvent }: RoleEditProps) => {
-  const controlsText = TextService.controls;
-  const messagesText = TextService.messages;
+  const { controlsText, messagesText } = useAppContext();
   const [isLoading, setIsLoading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [editingItem, setEditingItem] = useState(item);

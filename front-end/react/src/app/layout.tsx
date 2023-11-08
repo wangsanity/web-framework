@@ -7,11 +7,11 @@ import { Menus } from './_menus/menus';
 import { routeNames } from '../router';
 import { PopupMenu, PopupMenuItem } from '../controls';
 import { AppContext, AppWrapper } from '../contexts/app-context';
+import { UserToken } from '../models';
 import Image from 'next/image';
 import '../styles/app.scss';
 import '../styles/vendor.scss';
 import './layout.scss';
-import { UserToken } from '@/models';
 
 export default function RootLayout({
   children,
@@ -64,8 +64,11 @@ export default function RootLayout({
     appContext.setControlsText(TextService.controls);
     appContext.setMessagesText(TextService.messages);
     appContext.setUserToken(token);
-    setUserToken(token);
   }, [appContext]);
+
+  useEffect(() => {
+    setUserToken(BaseInfoService.getUser());
+  }, [pathname]);
 
   return (
     <html>

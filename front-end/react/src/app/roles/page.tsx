@@ -12,14 +12,13 @@ import {
 import { RoleBusiness } from '../../business';
 import { RoleEdit } from './_role-edit/role-edit';
 import { AccessControl } from './_access-control/access-control';
-import { TextService } from '../../utils';
+import { useAppContext } from '../../contexts/app-context';
 import { QueryFilters, Role, RoleList } from '../../models';
 import { TableButton, TableColumn } from '@/controls/table/table.interface';
 import './roles.scss';
 
 export default function Roles() {
-  const controlsText = TextService.controls;
-  const messagesText = TextService.messages;
+  const { controlsText, messagesText } = useAppContext();
   const [tableButtons, setTableButtons] = useState<TableButton[]>([]);
   const [columns, setColumns] = useState<TableColumn[]>([]);
   const [list, setList] = useState<Role[]>([]);

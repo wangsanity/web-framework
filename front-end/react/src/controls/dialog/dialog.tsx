@@ -1,5 +1,5 @@
+import { useAppContext } from '@/contexts/app-context';
 import { Button } from '..';
-import { TextService } from '../../utils';
 import './dialog.scss';
 import React from 'react';
 
@@ -23,13 +23,14 @@ export const Dialog = ({
   title,
   showOkButton = false,
   showCancelButton = false,
-  okButtonText = TextService.controls.ok,
-  cancelButtonText = TextService.controls.cancel,
+  okButtonText,
+  cancelButtonText,
   onOk,
   onCancel,
   isLoading,
   onClose,
 }: DialogProps) => {
+  const { controlsText } = useAppContext();
   const clickBg = (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     onClose && onClose();
     event.stopPropagation();
@@ -58,10 +59,10 @@ export const Dialog = ({
         {(showOkButton || showCancelButton) && (
           <div className="dialog-footer">
             <Button onClick={() => onOk && onOk()} state={isLoading ? 3 : 1}>
-              {okButtonText}
+              {okButtonText || controlsText.ok}
             </Button>
             <Button onClick={() => onCancel && onCancel()} role="secondary">
-              {cancelButtonText}
+              {cancelButtonText || controlsText.cancel}
             </Button>
           </div>
         )}

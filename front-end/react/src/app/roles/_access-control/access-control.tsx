@@ -8,7 +8,8 @@ import {
   getCheckedIds,
 } from '../../../controls';
 import { RoleBusiness, SystemBusiness } from '../../../business';
-import { ToastService, TextService } from '../../../utils';
+import { ToastService } from '../../../utils';
+import { useAppContext } from '../../../contexts/app-context';
 import { Role } from '../../../models';
 import './access-control.scss';
 
@@ -23,7 +24,7 @@ export const AccessControl = ({
   cancelEvent,
   instance,
 }: AccessControlProps) => {
-  const controlsText = TextService.controls;
+  const { controlsText } = useAppContext();
   const [menus, setMenus] = useState(SystemBusiness.getSystemMenus());
   const [isLoading, setIsLoading] = useState(true);
   clearUrl(menus);
