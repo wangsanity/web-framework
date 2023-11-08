@@ -5,32 +5,34 @@ import {
   CtrToolbar,
   type TableColumn,
   type TableOptions,
-  type PageBarOptions
+  type PageBarOptions,
+  type TableButton
 } from '../../controls';
 import { ComSearch } from '../../components';
 import { UserBusiness } from '../../business';
 import { type QueryFilters, type User, type UserList } from '../../models';
 import { defineComponent } from 'vue';
 import { TextService } from '../../utils';
+import type { PropType } from 'vue';
 import ComUserProfile from '../user-profile/user-profile.vue';
 
 export default defineComponent({
   components: { CtrTable, CtrPageBar, CtrDialog, ComUserProfile, ComSearch, CtrToolbar },
   props: {
-    item: {
-      default: {}
-    },
     filters: {
-      default: {}
+      default: {} as QueryFilters,
+      type: Object as PropType<QueryFilters>
     },
     showToolbar: {
       default: false
     },
     buttons: {
-      default: []
+      default: [] as TableButton[],
+      type: Object as PropType<TableButton[]>
     },
     columns: {
-      default: []
+      default: [] as TableColumn[],
+      type: Object as PropType<TableColumn[]>
     }
   },
   data() {

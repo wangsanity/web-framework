@@ -5,12 +5,13 @@ import {
   CtrToolbar,
   type TableColumn,
   type TableOptions,
-  type PageBarOptions
+  type PageBarOptions,
+  type TableButton
 } from '../../../controls';
 import { ComSearch, ComUserProfile } from '../../../components';
 import { UserRoleBusiness } from '../../../business';
 import { type QueryFilters, type UserRole, type UserRoleList } from '../../../models';
-import { defineComponent } from 'vue';
+import { defineComponent, type PropType } from 'vue';
 import { TextService } from '../../../utils';
 
 export default defineComponent({
@@ -20,16 +21,19 @@ export default defineComponent({
       default: {}
     },
     filters: {
-      default: {}
+      default: {} as QueryFilters,
+      type: Object as PropType<QueryFilters>
     },
     showToolbar: {
       default: false
     },
     buttons: {
-      default: []
+      default: [] as TableButton[],
+      type: Object as PropType<TableButton[]>
     },
     columns: {
-      default: []
+      default: [] as TableColumn[],
+      type: Object as PropType<TableColumn[]>
     }
   },
   data() {

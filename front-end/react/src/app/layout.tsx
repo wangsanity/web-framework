@@ -21,14 +21,15 @@ export default function RootLayout({
   const router = useRouter();
   const pathname = usePathname();
   const appContext = useAppContext();
-  const messagesText = appContext.messagesText;
   const [userToken, setUserToken] = useState<UserToken>();
   const [userMenus, setUserMenus] = useState<PopupMenuItem[]>([]);
   const [languages, setLanguages] = useState<PopupMenuItem[]>([]);
   const [currentLanguage, setCurrentLanguage] = useState('');
+  const [siteName, setSiteName] = useState('');
 
   const init = useCallback(() => {
     setCurrentLanguage(TextService.languageObject?.text);
+    setSiteName(TextService.messages.siteName);
     setLanguages(
       TextService.controls.languages.map((item) => {
         return {
@@ -75,21 +76,19 @@ export default function RootLayout({
           ) : (
             <div className="layout-box">
               <div className="navigation">
-                <span className="navigation-left">
+                <div className="navigation-left">
                   <i className="fa fa-bicycle"></i>
-                  <span className="site-name">{messagesText.siteName}</span>
-                </span>
-                <span className="navigation-right">
-                  <span className="language-wrapper">
+                  <span className="site-name">{siteName}</span>
+                </div>
+                <div className="navigation-right">
+                  <div className="language-wrapper">
                     <PopupMenu items={languages} position="top-left">
                       <span className="display-name">{currentLanguage}</span>
                       <i className="fa fa-sort-desc"></i>
                     </PopupMenu>
-                  </span>
+                  </div>
                   <PopupMenu items={userMenus} position="top-right">
-                    <span className="display-name" suppressHydrationWarning>
-                      {userToken?.loginName}
-                    </span>
+                    <span className="display-name">{userToken?.loginName}</span>
                     <i className="fa fa-sort-desc"></i>
                   </PopupMenu>
                   <Image
@@ -98,8 +97,9 @@ export default function RootLayout({
                     height={26}
                     src={'/assets/images/male.png'}
                     alt=""
+                    priority={true}
                   />
-                </span>
+                </div>
               </div>
               <div className="main">
                 <div className="main-left">

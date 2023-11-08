@@ -42,7 +42,7 @@ export const TreeNode = ({
   const renderNodes = (nodes || []).map((item, index) => (
     <div
       key={item.id || index}
-      className={['ctr-tree-node', className].join('')}
+      className={['ctr-tree-node', className].join(' ')}
     >
       <div className={'ctr-tree-node-name theme-' + theme}>
         {(item.children || []).length > 0 ? (

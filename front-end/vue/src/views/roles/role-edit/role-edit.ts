@@ -8,7 +8,7 @@ export default defineComponent({
   components: { CtrButton, CtrInput },
   props: {
     item: {
-      default: {}
+      default: {} as Role
     }
   },
   data() {

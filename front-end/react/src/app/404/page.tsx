@@ -1,3 +1,4 @@
+'use client';
 import React from 'react';
 import { TextService } from '@/utils';
 import './404.scss';

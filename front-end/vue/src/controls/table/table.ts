@@ -11,7 +11,7 @@ export default defineComponent({
   },
   props: {
     options: {
-      default: {}
+      default: {} as TableOptions
     },
     columns: {
       default: [] as TableColumn[]
@@ -40,10 +40,9 @@ export default defineComponent({
   },
   methods: {
     update() {
-      const columns: TableColumn[] = (this as any).columns;
-      const props: any = this.$props as any;
-      if (props.options) {
-        this.tableOptions = props.options;
+      const columns: TableColumn[] = this.columns;
+      if (this.$props.options) {
+        this.tableOptions = this.$props.options;
       }
 
       if (this.tableOptions.alwaysShowHeader !== false) {
@@ -54,24 +53,24 @@ export default defineComponent({
         this.tableOptions.buttonInGroup = true;
       }
 
-      if (props.data) {
-        this.tableData = JSON.parse(JSON.stringify(props.data));
+      if (this.$props.data) {
+        this.tableData = JSON.parse(JSON.stringify(this.$props.data));
       }
 
-      if (props.columns) {
+      if (this.$props.columns) {
         let tempString = '';
         for (let i = 0; i < columns.length; i++) {
           if (columns[i].template) {
             tempString = columns[i].template;
-            if (this.tableData && props.data.length > 0) {
-              for (let j = 0; j < props.data.length; j++) {
+            if (this.tableData && this.$props.data.length > 0) {
+              for (let j = 0; j < this.$props.data.length; j++) {
                 for (let m = 0; m < columns.length; m++) {
                   tempString = tempString.replace(
                     '{{' + columns[m].field + '}}',
-                    this.tableData[j][columns[m].field as any]
+                    this.tableData[j][columns[m].field as string]
                   );
                 }
-                this.tableData[j][columns[i].field as any] = tempString;
+                this.tableData[j][columns[i].field as string] = tempString;
               }
             }
           }
@@ -105,7 +104,7 @@ export default defineComponent({
     getCheckedItems() {
       return (this.tableData || []).filter((item: any) => item.checkState);
     },
-    onHeaderClick(header: any) {
+    onHeaderClick(header: TableColumn) {
       if (header) {
         if (header.click) {
           header.click(header);

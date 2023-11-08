@@ -1,6 +1,10 @@
 # Web framework demo
 
+This is a client only demo. No SSR or SSG.
+
 ## Getting Started
+
+### General scripts
 
 Run the development server:
 
@@ -14,12 +18,24 @@ Run the mock data mode:
 npm run mock / yarn mock
 ```
 
-Build and run on server
+Build app. The output files are in the dist folder.
 ```bash
 yarn build
-yarn start
 ```
 
-Local proxy is configured in next.config.js.
+### Available features
 
+```sh
+Only User Settings pages are available
+```
+
+### Internationalization
+```sh
+Text constants is under src/contants/texts folder. Only implemented English and Chinese simplify for example.
+```
+
+### Proxy
+```sh
+Local proxy is configured in next.config.js.
 Mock data is configured in proxy-mock.js.
+```
