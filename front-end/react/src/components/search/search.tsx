@@ -3,6 +3,7 @@ import { Button, Input } from '../../controls';
 import { TextService } from '../../utils';
 import { QueryFilters } from '../../models';
 import './search.scss';
+import { useAppContext } from '@/contexts/app-context';
 
 export interface ComSearchProps {
   searchEvent?: (queryFilters: QueryFilters) => void;
@@ -10,7 +11,7 @@ export interface ComSearchProps {
 }
 
 export const ComSearch = ({ searchEvent, isLoading }: ComSearchProps) => {
-  const controlsText = TextService.controls;
+  const { controlsText } = useAppContext();
   const [keyword, setKeyword] = useState('');
 
   const onSearch = () => {

@@ -1,5 +1,5 @@
-import React from 'react';
-import { TextService } from '../../utils';
+import React, { useContext } from 'react';
+import { AppContext } from '../../contexts/app-context';
 import './toolbar.scss';
 
 export interface ToolbarProps {
@@ -17,6 +17,7 @@ export const Toolbar = ({
   },
   clickEvent,
 }: ToolbarProps) => {
+  const { controlsText } = useContext(AppContext);
   const onClick = (buttonName: string) => {
     clickEvent && clickEvent(buttonName);
   };
@@ -26,19 +27,19 @@ export const Toolbar = ({
       {buttons.new === false ? null : (
         <span className="button-box" onClick={() => onClick('new')}>
           <i className="fa fa-plus-square-o"></i>
-          <span className="button-text">{TextService.controls.new}</span>
+          <span className="button-text">{controlsText.new}</span>
         </span>
       )}
       {!buttons.settings ? null : (
         <span className="button-box" onClick={() => onClick('settings')}>
           <i className="fa fa-cog"></i>
-          <span className="button-text">{TextService.controls.settings}</span>
+          <span className="button-text">{controlsText.settings}</span>
         </span>
       )}
       {!buttons.chart ? null : (
         <span className="button-box" onClick={() => onClick('chart')}>
           <i className="fa fa-bar-chart"></i>
-          <span className="button-text">{TextService.controls.statistics}</span>
+          <span className="button-text">{controlsText.statistics}</span>
         </span>
       )}
     </div>

@@ -1,12 +1,12 @@
 'use client';
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useContext, useEffect, useState } from 'react';
 import { BaseInfoService } from '../business';
 import { TextService } from '../utils';
 import { useRouter, usePathname } from 'next/navigation';
 import { Menus } from './_menus/menus';
 import { routeNames } from '../router';
 import { PopupMenu, PopupMenuItem } from '../controls';
-import { AppWrapper, useAppContext } from '../contexts/app-context';
+import { AppContext, AppWrapper } from '../contexts/app-context';
 import Image from 'next/image';
 import '../styles/app.scss';
 import '../styles/vendor.scss';
@@ -20,7 +20,7 @@ export default function RootLayout({
 }) {
   const router = useRouter();
   const pathname = usePathname();
-  const appContext = useAppContext();
+  const appContext = useContext(AppContext);
   const [userToken, setUserToken] = useState<UserToken>();
   const [userMenus, setUserMenus] = useState<PopupMenuItem[]>([]);
   const [languages, setLanguages] = useState<PopupMenuItem[]>([]);

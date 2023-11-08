@@ -16,7 +16,7 @@ export class StringService {
         codeBlocksIndexs.push(index);
         newArr.push(``);
       } else {
-        newArr.push(`<p>${item}</p>`)
+        newArr.push(`<div>${item}</div>`)
       }
     });
 

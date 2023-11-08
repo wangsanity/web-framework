@@ -1,14 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Tree, deselectItems, checkPath } from '../../controls';
 import { SystemBusiness } from '../../business';
 import { usePathname } from 'next/navigation';
 import { TreeNodeItem } from '../../controls';
-import { useAppContext } from '@/contexts/app-context';
+import { AppContext } from '../../contexts/app-context';
 import Link from 'next/link';
 import './menus.scss';
 
 export const Menus = () => {
-  const appContext = useAppContext();
+  const appContext = useContext(AppContext);
   const controlsText = appContext.controlsText;
   const pathname = usePathname();
   const [menus, setMenus] = useState<TreeNodeItem[]>([]);

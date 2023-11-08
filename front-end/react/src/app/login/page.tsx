@@ -1,19 +1,18 @@
 'use client';
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { Button, Input } from '../../controls';
 import { ToastService } from '../../utils';
 import { UserBusiness, BaseInfoService } from '../../business';
 import { routeNames } from '../../router';
 import { UserToken } from '../../models';
-import { useAppContext } from '@/contexts/app-context';
+import { AppContext } from '../../contexts/app-context';
 import './login.scss';
 
 export default function Login() {
   const router = useRouter();
-  const appContext = useAppContext();
-  const controlsText = appContext.controlsText;
-  const messagesText = appContext.messagesText;
+  const appContext = useContext(AppContext);
+  const { controlsText, messagesText } = appContext;
   const [isLoading, setIsLoading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [password, setPassword] = useState('');

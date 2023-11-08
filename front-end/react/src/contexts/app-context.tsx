@@ -28,12 +28,8 @@ let appState: AppState = {
   },
 };
 
-const AppContext = createContext<AppState>(appState);
+export const AppContext = createContext<AppState>(appState);
 
 export function AppWrapper({ children }: { children: ReactNode }) {
   return <AppContext.Provider value={appState}>{children}</AppContext.Provider>;
-}
-
-export function useAppContext() {
-  return useContext(AppContext);
 }
