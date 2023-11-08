@@ -1,0 +1,14 @@
+@import '../../../../styles/colors.scss';
+
+.com-user-edit{
+  width: 400px;
+  overflow: auto;
+
+  .button-row {
+    margin: 15px auto 0 10px;
+  }
+
+  .ctr-button {
+    margin: 0 3px;
+  }
+}
