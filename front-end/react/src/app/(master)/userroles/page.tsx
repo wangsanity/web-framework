@@ -3,13 +3,13 @@ import React, { useCallback, useEffect, useState } from 'react';
 import { ComUserList } from '../../../components';
 import { Dialog } from '../../../controls';
 import { RolesEdit } from './_roles-edit/roles-edit';
-import { useAppContext } from '../../../contexts/app-context';
+import { useAppState } from '../../../contexts/app-context';
 import { TableButton, TableColumn } from '@/controls/table/table.interface';
 import { UserRole } from '../../../models';
 import './user-roles.scss';
 
 export default function UserRoles() {
-  const { controlsText } = useAppContext();
+  const { controlsText } = useAppState();
   const [tableButtons, setTableButtons] = useState<TableButton[]>([]);
   const [columns, setColumns] = useState<TableColumn[]>([]);
   const [rolesDialogVisible, setRolesDialogVisible] = useState(false);

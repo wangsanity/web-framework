@@ -5,15 +5,14 @@ import { Button, Input } from '../../../controls';
 import { TextService, ToastService } from '../../../utils';
 import { UserBusiness, BaseInfoService } from '../../../business';
 import { routeNames } from '../../../router';
-import { UserToken } from '../../../models';
-import { useAppContext } from '../../../contexts/app-context';
+import { APP_CONTEXT_ACTIONS, useFullAppContext } from '../../../contexts/app-context';
 import './login.scss';
 
 export default function Login() {
   const router = useRouter();
-  const appContext = useAppContext();
-  const [controlsText, setControlsText] = useState(appContext.controlsText);
-  const [messagesText, setMessagesText] = useState(appContext.messagesText);
+  const appContext = useFullAppContext();
+  const [controlsText, setControlsText] = useState(appContext.state.controlsText);
+  const [messagesText, setMessagesText] = useState(appContext.state.messagesText);
   const [isLoading, setIsLoading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [password, setPassword] = useState('');
@@ -35,7 +34,10 @@ export default function Login() {
     setSubmitted(true);
     UserBusiness.login(userName, password)
       .then((userToken) => {
-        appContext.setUserToken(userToken as UserToken);
+        appContext.dispatch({
+          type: APP_CONTEXT_ACTIONS.setUserToken,
+          payload: userToken,
+        });
         setIsLoading(false);
         router.push(routeNames.home);
       })

@@ -1,7 +1,7 @@
 import React, { useCallback, useContext, useEffect, useState } from 'react';
 import { type TableOptions, type TableColumn } from './table.interface';
 import { FormatService } from '../../utils';
-import { AppContext } from '../../contexts/app-context';
+import { useAppState } from '../../contexts/app-context';
 import './table.scss';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -19,7 +19,7 @@ export const Table = ({
   data = [],
   isLoading,
 }: TableProps) => {
-  const { controlsText, messagesText } = useContext(AppContext);
+  const { controlsText, messagesText } = useAppState();
   const [tableOptions, setTableOptions] = useState<TableOptions>(options);
   const [tableData, setTableData] = useState(data);
 

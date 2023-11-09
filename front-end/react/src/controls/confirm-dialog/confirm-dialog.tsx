@@ -1,6 +1,6 @@
 import React from 'react';
 import { Dialog } from '..';
-import { useAppContext } from '@/contexts/app-context';
+import { useAppState } from '@/contexts/app-context';
 
 export interface ConfirmDialogProps {
   visible?: boolean;
@@ -29,7 +29,7 @@ export const ConfirmDialog = ({
   onClose,
   isLoading,
 }: ConfirmDialogProps) => {
-  const { controlsText } = useAppContext();
+  const { controlsText } = useAppState();
 
   return (
     <Dialog

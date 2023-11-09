@@ -11,7 +11,7 @@ import React, {
   useState,
 } from 'react';
 import { Provinces, Cities, Areas } from './data';
-import { useAppContext } from '@/contexts/app-context';
+import { useAppState } from '@/contexts/app-context';
 import './city-picker.scss';
 
 interface Province {
@@ -62,7 +62,7 @@ export const CityPicker = ({
   cancelButtonText,
   addressCode,
 }: CityPickerProps) => {
-  const { controlsText } = useAppContext();
+  const { controlsText } = useAppState();
   const allProvinces = Provinces;
   const allCityies = Cities;
   const allAreas = Areas;

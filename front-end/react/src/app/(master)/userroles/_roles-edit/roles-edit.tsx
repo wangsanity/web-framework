@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useState } from 'react';
 import { Button, Checkbox, Loading } from '../../../../controls';
 import { UserBusiness, RoleBusiness } from '../../../../business';
 import { ToastService } from '../../../../utils';
-import { useAppContext } from '../../../../contexts/app-context';
+import { useAppState } from '../../../../contexts/app-context';
 import { Role, UserRole } from '../../../../models';
 import './roles-edit.scss';
 
@@ -13,7 +13,7 @@ export interface RolesEditProps {
 }
 
 export const RolesEdit = ({ item, cancelEvent, saveEvent }: RolesEditProps) => {
-  const { controlsText } = useAppContext();
+  const { controlsText } = useAppState();
   const [isLoading, setIsLoading] = useState(false);
   const [editingItem] = useState<UserRole>({ ...item } as UserRole);
   const [list, setList] = useState<Role[]>([]);

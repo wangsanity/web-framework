@@ -1,4 +1,4 @@
-import { useAppContext } from '@/contexts/app-context';
+import { useAppState } from '@/contexts/app-context';
 import { Button } from '..';
 import './dialog.scss';
 import React from 'react';
@@ -30,7 +30,7 @@ export const Dialog = ({
   isLoading,
   onClose,
 }: DialogProps) => {
-  const { controlsText } = useAppContext();
+  const { controlsText } = useAppState();
   const clickBg = (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     onClose && onClose();
     event.stopPropagation();

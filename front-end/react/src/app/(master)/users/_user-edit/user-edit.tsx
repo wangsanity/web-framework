@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Button, Input, CityPicker, CityPickerResult } from '../../../../controls';
 import { UserBusiness } from '../../../../business';
 import { ToastService } from '../../../../utils';
-import { useAppContext } from '../../../../contexts/app-context';
+import { useAppState } from '../../../../contexts/app-context';
 import { User } from '../../../../models';
 import './user-edit.scss';
 
@@ -17,7 +17,7 @@ export const UserEdit = ({
   saveEvent,
   cancelEvent,
 }: UserEditProps) => {
-  const { controlsText, messagesText } = useAppContext();
+  const { controlsText, messagesText } = useAppState();
   const [originalCellphone] = useState(item?.cellphone || '');
   const [isLoading, setIsLoading] = useState(false);
   const [submitted, setSubmitted] = useState(false);

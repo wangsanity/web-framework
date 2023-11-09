@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Button, Input } from '../../controls';
 import { QueryFilters } from '../../models';
-import { useAppContext } from '../../contexts/app-context';
+import { useAppState } from '../../contexts/app-context';
 import './search.scss';
 
 export interface ComSearchProps {
@@ -10,7 +10,7 @@ export interface ComSearchProps {
 }
 
 export const ComSearch = ({ searchEvent, isLoading }: ComSearchProps) => {
-  const { controlsText } = useAppContext();
+  const { controlsText } = useAppState();
   const [keyword, setKeyword] = useState('');
 
   const onSearch = () => {

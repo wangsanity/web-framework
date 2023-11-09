@@ -2,11 +2,12 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { BaseInfoService } from '../../business';
 import { TextService } from '../../utils';
-import { useRouter, usePathname } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 import { Menus } from './_menus/menus';
 import { routeNames } from '../../router';
 import { PopupMenu, PopupMenuItem } from '../../controls';
 import { UserToken } from '../../models';
+import { useAppState } from '@/contexts/app-context';
 import Image from 'next/image';
 import '../../styles/app.scss';
 import '../../styles/vendor.scss';
@@ -14,7 +15,7 @@ import './layout.scss';
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   const router = useRouter();
-  const pathname = usePathname();
+  const appContext = useAppState();
   const [userToken, setUserToken] = useState<UserToken>();
   const [userMenus, setUserMenus] = useState<PopupMenuItem[]>([]);
   const [languages, setLanguages] = useState<PopupMenuItem[]>([]);
@@ -23,7 +24,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 
   const init = useCallback(() => {
     setCurrentLanguage(TextService.languageObject?.text);
-    setSiteName(TextService.messages.siteName);
+    setSiteName(appContext.messagesText.siteName);
     setLanguages(
       TextService.controls.languages.map((item) => {
         return {
@@ -47,15 +48,12 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         },
       },
     ]);
-  }, [router]);
+    setUserToken(appContext.userToken);
+  }, [router, appContext]);
 
   useEffect(() => {
     init();
   }, [init]);
-
-  useEffect(() => {
-    setUserToken(BaseInfoService.getUser());
-  }, [pathname]);
 
   return (
     <div className="layout-box">

@@ -4,7 +4,7 @@ import { ComSearch, ComUserProfile } from '..';
 import { UserBusiness } from '../../business';
 import { TableButton, TableColumn } from '../../controls/table/table.interface';
 import { QueryFilters, User, UserList } from '../../models';
-import { useAppContext } from '../../contexts/app-context';
+import { useAppState } from '../../contexts/app-context';
 import './user-list.scss';
 
 export interface ComUserListProps {
@@ -25,7 +25,7 @@ export const ComUserList = ({
   showToolbar,
   instance,
 }: ComUserListProps) => {
-  const { controlsText } = useAppContext();
+  const { controlsText } = useAppState();
   const [tableColumns] = useState(
     columns?.length
       ? columns

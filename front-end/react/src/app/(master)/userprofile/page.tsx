@@ -4,12 +4,12 @@ import { ComUserProfile } from '../../../components';
 import { Loading } from '../../../controls';
 import { BaseInfoService, UserBusiness } from '../../../business';
 import { ToastService } from '../../../utils';
-import { useAppContext } from '../../../contexts/app-context';
+import { useAppState } from '../../../contexts/app-context';
 import { User } from '../../../models';
 import './user-profile.scss';
 
 export default function UserProfile() {
-  const { messagesText } = useAppContext();
+  const { messagesText } = useAppState();
   const [isLoading, setIsLoading] = useState(false);
   const [userInfo, setUserInfo] = useState<User>();
 

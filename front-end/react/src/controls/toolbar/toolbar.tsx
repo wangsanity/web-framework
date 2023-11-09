@@ -1,5 +1,5 @@
-import React, { useContext } from 'react';
-import { AppContext } from '../../contexts/app-context';
+import React from 'react';
+import { useAppState } from '../../contexts/app-context';
 import './toolbar.scss';
 
 export interface ToolbarProps {
@@ -17,7 +17,7 @@ export const Toolbar = ({
   },
   clickEvent,
 }: ToolbarProps) => {
-  const { controlsText } = useContext(AppContext);
+  const { controlsText } = useAppState();
   const onClick = (buttonName: string) => {
     clickEvent && clickEvent(buttonName);
   };

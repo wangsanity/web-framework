@@ -9,7 +9,7 @@ import {
 } from '../../../../controls';
 import { RoleBusiness, SystemBusiness } from '../../../../business';
 import { ToastService } from '../../../../utils';
-import { useAppContext } from '../../../../contexts/app-context';
+import { useAppState } from '../../../../contexts/app-context';
 import { Role } from '../../../../models';
 import './access-control.scss';
 
@@ -24,7 +24,7 @@ export const AccessControl = ({
   cancelEvent,
   instance,
 }: AccessControlProps) => {
-  const { controlsText } = useAppContext();
+  const { controlsText } = useAppState();
   const [menus, setMenus] = useState(SystemBusiness.getSystemMenus());
   const [isLoading, setIsLoading] = useState(true);
   clearUrl(menus);

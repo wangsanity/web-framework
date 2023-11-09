@@ -3,11 +3,11 @@ import React, { useState } from 'react';
 import { Button, Input } from '../../../controls';
 import { UserBusiness } from '../../../business';
 import { ToastService } from '../../../utils';
-import { useAppContext } from '../../../contexts/app-context';
+import { useAppState } from '../../../contexts/app-context';
 import './password.scss';
 
 export default function Password() {
-  const { controlsText, messagesText } = useAppContext();
+  const { controlsText, messagesText } = useAppState();
   const [isLoading, setIsLoading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [originalPassword, setOriginalPassword] = useState('');
