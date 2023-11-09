@@ -39,7 +39,7 @@ jobs:
       - if: steps.changes.outputs.ui == 'true'
         uses: ./.github/actions/use-node
         with:
-          yarn-lock-path: front-end/react/yarn-lock.json
+          package-lock-path: front-end/react/yarn-lock.json
 
       - if: steps.changes.outputs.ui == 'true'
         name: Install packages
