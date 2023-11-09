@@ -73,7 +73,7 @@ export const RolesEdit = ({ item, cancelEvent, saveEvent }: RolesEditProps) => {
       })
       .catch((err) => {
         setIsLoading(false);
-        ToastService.notify(err.message || err, 'error');
+        ToastService.notify(err?.message || err, 'error');
       });
   };
 

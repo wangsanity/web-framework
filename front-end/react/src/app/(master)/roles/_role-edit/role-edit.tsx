@@ -36,7 +36,7 @@ export const RoleEdit = ({ item = {}, saveEvent, cancelEvent }: RoleEditProps) =
       })
       .catch((err) => {
         setIsLoading(false);
-        ToastService.notify(err.message || err, 'error');
+        ToastService.notify(err?.message || err, 'error');
       });
   };
 

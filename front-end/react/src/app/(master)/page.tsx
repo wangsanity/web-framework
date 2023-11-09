@@ -1,7 +1,8 @@
 'use client';
 import React, { useEffect, useState } from 'react';
 import { SystemBusiness } from '@/business';
-import { StringService } from '@/utils';
+import { StringService, ToastService } from '@/utils';
+import { APIError } from '@/models';
 import './page.scss';
 
 export default function Home() {
@@ -14,6 +15,8 @@ export default function Home() {
   const getReadMe = () => {
     SystemBusiness.getReadMe().then((data) => {
       setReadMeContent(StringService.markDownToHTML(data));
+    }).catch((err: APIError) => {
+      ToastService.notify(err?.message || err, 'error');
     });
   };
 

@@ -1,12 +1,14 @@
 export class ToastService {
   static notify(
-    msg: string,
+    message: string | Object,
     type: 'success' | 'warning' | 'info' | 'error' = 'info',
     delay: number = 3000
   ) {
-    if (!msg) {
+    if (!message) {
       return;
     }
+
+    const msg = typeof message === 'object' ? JSON.stringify(message) : message;
 
     const notificationId = 'AB5EE3A9CE0994F83D061B1646B5283F';
     const notificaitonStyle = `position:fixed;max-height:400px;overflow:auto;width:300px;left:calc(50% - 150px);top:10px;z-index:10000;`;
@@ -30,7 +32,9 @@ export class ToastService {
       }
     };
 
-    let box: HTMLElement = document.getElementById(notificationId) as HTMLElement;
+    let box: HTMLElement = document.getElementById(
+      notificationId
+    ) as HTMLElement;
     if (!box) {
       box = document.createElement('div');
       box.id = notificationId;

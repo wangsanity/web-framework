@@ -44,13 +44,17 @@ export class HttpRequestService {
       'Content-Type': 'application/json',
       language: TextService.getLanguage()?.name,
       token: user && user.token ? user.token : '',
-      ...params.headers
+      ...params.headers,
     };
     this._redirected = false;
     return true;
   }
 
-  private static apiAxios(method: string, url: string, params: HttpOptions): Promise<any> {
+  private static apiAxios(
+    method: string,
+    url: string,
+    params: HttpOptions
+  ): Promise<any> {
     function resolveError(err: any) {
       if (
         err.status === 401 ||
@@ -70,11 +74,12 @@ export class HttpRequestService {
         url: url,
         data: method === 'POST' || method === 'PUT' ? params.body : null,
         withCredentials: false,
-        headers: params.headers
+        headers: params.headers,
       })
         .then((res) => {
           if (res.status === 200) {
-            setTimeout(() => { // for simulation, remove it if call backend service
+            setTimeout(() => {
+              // for simulation, remove it if call backend service
               resolve(res.data);
             }, 200);
           } else {
@@ -84,7 +89,11 @@ export class HttpRequestService {
         })
         .catch((err) => {
           if (!resolveError(err)) {
-            reject(err.response && err.response.data ? err.response.data : err.response);
+            reject(
+              err.response && err.response.data
+                ? err.response.data
+                : err.response
+            );
           }
         });
     });
@@ -97,7 +106,10 @@ export class HttpRequestService {
       return;
     }
     HttpRequestService._redirected = true;
-    if (window.location.href.toLowerCase().indexOf('login') === -1) {
+    if (
+      typeof window !== 'undefined' &&
+      window.location?.href.toLowerCase().indexOf('login') === -1
+    ) {
       window.location.href = window.location.origin + routeNames.login;
       return;
     }

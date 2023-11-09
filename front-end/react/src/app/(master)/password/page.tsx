@@ -26,7 +26,7 @@ export default function Password() {
       })
       .catch((err) => {
         setIsLoading(false);
-        ToastService.notify(err.message || err, 'error');
+        ToastService.notify(err?.message || err, 'error');
       });
   };
 

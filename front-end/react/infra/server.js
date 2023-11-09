@@ -43,7 +43,7 @@ app.all('/api/**', (req, res) => {
 });
 
 app.get('/*', (req, res) => {
-  res.sendFile(__dirname + '/build/index.html');
+  res.sendFile(__dirname + `/build/${req.path.toLowerCase()}.html`);
 });
 
 app.listen(port, () => {
