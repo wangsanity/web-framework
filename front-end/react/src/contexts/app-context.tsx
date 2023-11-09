@@ -90,6 +90,6 @@ export function useAppState() {
   return useContext(AppContext).state;
 }
 
-export function useFullAppContext() {
+export function useAppContext() {
   return useContext(AppContext);
 }

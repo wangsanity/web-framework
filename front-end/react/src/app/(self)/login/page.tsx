@@ -5,12 +5,12 @@ import { Button, Input } from '../../../controls';
 import { TextService, ToastService } from '../../../utils';
 import { UserBusiness, BaseInfoService } from '../../../business';
 import { routeNames } from '../../../router';
-import { APP_CONTEXT_ACTIONS, useFullAppContext } from '../../../contexts/app-context';
+import { APP_CONTEXT_ACTIONS, useAppContext } from '../../../contexts/app-context';
 import './login.scss';
 
 export default function Login() {
   const router = useRouter();
-  const appContext = useFullAppContext();
+  const appContext = useAppContext();
   const [controlsText, setControlsText] = useState(appContext.state.controlsText);
   const [messagesText, setMessagesText] = useState(appContext.state.messagesText);
   const [isLoading, setIsLoading] = useState(false);
