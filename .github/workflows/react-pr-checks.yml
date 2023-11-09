@@ -20,7 +20,7 @@ defaults:
     working-directory: ./front-end/react
 
 jobs:
-  react_lint_unit_test:
+  react_lint_build:
     runs-on: ubuntu-latest
     steps:
       - uses: dorny/paths-filter@v2.2.1
@@ -39,7 +39,7 @@ jobs:
       - if: steps.changes.outputs.ui == 'true'
         uses: ./.github/actions/use-node
         with:
-          yarn-lock-path: front-end/react/yarn-lock.json
+          package-lock-path: front-end/react/yarn.lock
 
       - if: steps.changes.outputs.ui == 'true'
         name: Install packages

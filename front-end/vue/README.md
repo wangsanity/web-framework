@@ -49,5 +49,5 @@ Text constants is under src/contants/texts folder. Only implemented English and 
 ### Mock data
 
 Http request is proxied to static json files located in folder public/mock-data. 
-Please refer to file proxy.conf.js for detail logic.
+Please refer to file proxy.conf.js for details.
 setTimeout is used to simulate http calls. Please remove it from src/business/base/http-request.service.ts.
