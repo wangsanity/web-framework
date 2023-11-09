@@ -20,7 +20,7 @@ defaults:
     working-directory: ./front-end/react
 
 jobs:
-  react_lint_unit_test:
+  react_lint_build:
     runs-on: ubuntu-latest
     steps:
       - uses: dorny/paths-filter@v2.2.1
