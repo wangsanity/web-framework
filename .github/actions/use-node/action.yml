@@ -1,0 +1,17 @@
+name: 'Setup node'
+
+inputs:
+  yarn-lock-path:
+    description: 'specify package lock file path'
+    required: true
+
+runs:
+  using: "composite"
+  steps:
+    - name: Setup node
+      uses: actions/setup-node@v3
+      with:
+        node-version: 21.0.0
+        cache: yarn
+        cache-dependency-path: ${{ inputs.package-lock-path }}
+        registry-url: 'https://registry.npmjs.org'

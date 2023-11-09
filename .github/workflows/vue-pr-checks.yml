@@ -1,0 +1,63 @@
+# It will be triggered when front-end/vue related files changed.
+# It runs eslint, unit tests and e2e tests(to do).
+
+name: 'Vue PR checks'
+
+on:
+  pull_request:
+    branches:
+      - 'main'
+      - 'releases/**'
+    paths:
+      - 'front-end/vue/**/*'
+      - '.github/workflows/vue-pr-checks.yml'
+  workflow_dispatch:
+
+permissions: write-all
+
+defaults:
+  run:
+    working-directory: ./front-end/vue
+
+jobs:
+  vue_lint_unit_test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: dorny/paths-filter@v2.2.1
+        id: changes
+        with:
+          filters: |
+            ui:
+              - 'front-end/vue/**/*'
+              - 'my-notes/packages/shared/**/*'
+              - '.github/workflows/vue-pr-checks.yml'
+
+      - if: steps.changes.outputs.ui == 'true'
+        name: Checkout
+        uses: actions/checkout@v3
+
+      - if: steps.changes.outputs.ui == 'true'
+        uses: ./.github/actions/use-node
+        with:
+          yarn-lock-path: front-end/vue/package-lock.json
+
+      - if: steps.changes.outputs.ui == 'true'
+        name: Install packages
+        run: |
+          npm install
+
+      - if: steps.changes.outputs.ui == 'true'
+        name: Run lint
+        run: |
+          npm run lint
+
+      - if: steps.changes.outputs.ui == 'true'
+        name: Run unit tests
+        run: |
+          npm run test:unit
+
+      - if: steps.changes.outputs.ui == 'true'
+        name: Run build
+        run: |
+          npm run build
+  
