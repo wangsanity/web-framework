@@ -20,7 +20,7 @@ defaults:
     working-directory: ./front-end/react
 
 jobs:
-  react_lint_build:
+  react_lint_ut_build:
     runs-on: ubuntu-latest
     steps:
       - uses: dorny/paths-filter@v2.2.1
@@ -54,7 +54,7 @@ jobs:
       - if: steps.changes.outputs.ui == 'true'
         name: Run unit tests
         run: |
-          npm run test
+          yarn test
 
       - if: steps.changes.outputs.ui == 'true'
         name: Run build

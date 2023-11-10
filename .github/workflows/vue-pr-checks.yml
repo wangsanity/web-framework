@@ -20,7 +20,7 @@ defaults:
     working-directory: ./front-end/vue
 
 jobs:
-  vue_lint_unit_test:
+  vue_lint_ut_build:
     runs-on: ubuntu-latest
     steps:
       - uses: dorny/paths-filter@v2.2.1
