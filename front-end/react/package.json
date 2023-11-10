@@ -10,7 +10,8 @@
     "postbuild": "./infra/copyFiles.sh",
     "start": "next start",
     "lint": "next lint",
-    "test": "jest --watch"
+    "test": "jest --watch",
+    "test:unit": "jest"
   },
   "dependencies": {
     "axios": "^1.6.0",
