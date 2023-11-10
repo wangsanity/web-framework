@@ -10,10 +10,11 @@ export interface LoadingProps
 export const Loading = ({ absolute, ...props }: LoadingProps) => {
   return (
     <div
-      className={['loading-box', absolute ? 'position-absolute' : ''].join(' ')}
+      className={['ctr-loading', absolute ? 'position-absolute' : ''].join(' ')}
+      data-testid="ctr-loading"
       {...props}
     >
-      <Image src="/assets/images/loading.gif" alt="" width="20" height="20" />
+      <Image src="/assets/images/loading.gif" alt="Loading" width="20" height="20" />
     </div>
   );
 };

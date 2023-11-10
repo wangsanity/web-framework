@@ -9,6 +9,7 @@ export const ZHCNCONTROLS: IControls = {
   cellphone: '手机号',
   checkAll: '全选',
   city: '市',
+  close: '关闭',
   confirm: '确定',
   delete: '删除',
   department: '部门',

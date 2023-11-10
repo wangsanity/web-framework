@@ -91,10 +91,10 @@ export default function Login() {
             </span>
           </div>
           <div className="button-row">
-            <Button state={isLoading ? 3 : 1} onClick={() => login()}>
+            <Button isLoading={isLoading} onClick={() => login()}>
               {controlsText.login}
             </Button>
-            <Button state={isLoading ? 2 : 1} onClick={reset}>
+            <Button isLoading={isLoading} onClick={reset}>
               {controlsText.reset}
             </Button>
           </div>

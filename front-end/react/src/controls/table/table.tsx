@@ -1,7 +1,9 @@
-import React, { useCallback, useContext, useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { type TableOptions, type TableColumn } from './table.interface';
 import { FormatService } from '../../utils';
-import { useAppState } from '../../contexts/app-context';
+import { TextService } from '@/utils';
+import { IControls } from '@/constants/texts/controls.i';
+import { IMessages } from '@/constants/texts/messages.i';
 import './table.scss';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -19,9 +21,15 @@ export const Table = ({
   data = [],
   isLoading,
 }: TableProps) => {
-  const { controlsText, messagesText } = useAppState();
+  const [controlsText, setControlsText] = useState<IControls>({} as IControls);
+  const [messagesText, setMessagessText] = useState<IMessages>({} as IMessages);
   const [tableOptions, setTableOptions] = useState<TableOptions>(options);
   const [tableData, setTableData] = useState(data);
+
+  useEffect(() => {
+    setControlsText(TextService.controls);
+    setMessagessText(TextService.messages);
+  }, []);
 
   const update = useCallback(() => {
     const tableColumns = columns || [];
@@ -120,13 +128,15 @@ export const Table = ({
       ].join(' ')}
     >
       <tr className={'align-' + (tableOptions?.align || 'center')}>
-        <th className={tableOptions.showCheckbox ? '' : 'hidden'}>
-          <input
-            onClick={() => checkAll()}
-            value={String(tableOptions.checkAllState)}
-            type="checkbox"
-          />
-        </th>
+        {tableOptions.showCheckbox && (
+          <th>
+            <input
+              onClick={() => checkAll()}
+              value={String(tableOptions.checkAllState)}
+              type="checkbox"
+            />
+          </th>
+        )}
         {(columns || []).map((item, index) => (
           <th
             key={index}
@@ -167,13 +177,15 @@ export const Table = ({
           key={index}
           onClick={() => onRowClick(item)}
         >
-          <td className={tableOptions.showCheckbox ? '' : 'hidden'}>
-            <input
-              type="checkbox"
-              onClick={() => checkOne(item)}
-              value={item.checkState}
-            />
-          </td>
+          {tableOptions.showCheckbox && (
+            <td>
+              <input
+                type="checkbox"
+                onClick={() => checkOne(item)}
+                value={item.checkState}
+              />
+            </td>
+          )}
           {(columns || []).map((header, index) => (
             <td key={index} className={header.hidden ? 'hidden' : ''}>
               {header.urlBase && !header.bindHtml && !header.image ? (

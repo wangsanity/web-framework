@@ -4,14 +4,10 @@
  *  will improve to support different levels.
  * position format: vertical-horizontal. e.g. top-left
  */
-import React, {
-  ReactNode,
-  useCallback,
-  useEffect,
-  useState,
-} from 'react';
+import React, { ReactNode, useCallback, useEffect, useState } from 'react';
 import { Provinces, Cities, Areas } from './data';
-import { useAppState } from '@/contexts/app-context';
+import { TextService } from '@/utils';
+import { IControls } from '@/constants/texts/controls.i';
 import './city-picker.scss';
 
 interface Province {
@@ -53,7 +49,7 @@ export interface CityPickerProps {
 
 export const CityPicker = ({
   confirmEvent,
-  autoClose,
+  autoClose = true,
   cancelEvent,
   position,
   children,
@@ -62,7 +58,7 @@ export const CityPicker = ({
   cancelButtonText,
   addressCode,
 }: CityPickerProps) => {
-  const { controlsText } = useAppState();
+  const [controlsText, setControlsText] = useState<IControls>({} as IControls);
   const allProvinces = Provinces;
   const allCityies = Cities;
   const allAreas = Areas;
@@ -74,6 +70,10 @@ export const CityPicker = ({
   const [currentCity, setCurrentCity] = useState<City | null>(null);
   const [currentArea, setCurrentArea] = useState<Area | null>(null);
   const [citySlotId, setCitySlotId] = useState('');
+
+  useEffect(() => {
+    setControlsText(TextService.controls);
+  }, []);
 
   useEffect(() => {
     setCitySlotId('city-slot-wrapper-' + new Date().getTime());
@@ -288,10 +288,18 @@ export const CityPicker = ({
             </div>
             {!autoClose && (
               <div className="tool-bar">
-                <span className="link-button" onClick={() => onConfirm()}>
+                <span
+                  className="link-button"
+                  onClick={() => onConfirm()}
+                  data-testid="city-picker-confirm"
+                >
                   {confirmButtonText || controlsText.confirm}
                 </span>
-                <span className="link-button" onClick={() => onCancel()}>
+                <span
+                  className="link-button"
+                  onClick={() => onCancel()}
+                  data-testid="city-picker-cancel"
+                >
                   {cancelButtonText || controlsText.cancel}
                 </span>
               </div>

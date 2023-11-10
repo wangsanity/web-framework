@@ -10,8 +10,6 @@ export interface CheckboxProps
 export const Checkbox = ({
   checked,
   children,
-  onClick,
-  onChange,
   ...props
 }: CheckboxProps) => {
   return (
@@ -19,8 +17,6 @@ export const Checkbox = ({
       <input
         type="checkbox"
         defaultChecked={checked || false}
-        onClick={onClick}
-        onChange={onChange}
         {...props}
       />
       {children ? <span className="checkbox-text">{children}</span> : null}

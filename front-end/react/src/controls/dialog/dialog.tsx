@@ -1,7 +1,8 @@
-import { useAppState } from '@/contexts/app-context';
 import { Button } from '..';
+import React, { useEffect, useState } from 'react';
+import { TextService } from '@/utils';
+import { IControls } from '@/constants/texts/controls.i';
 import './dialog.scss';
-import React from 'react';
 
 export interface DialogProps {
   visible?: boolean;
@@ -30,7 +31,12 @@ export const Dialog = ({
   isLoading,
   onClose,
 }: DialogProps) => {
-  const { controlsText } = useAppState();
+  const [controlsText, setControlsText] = useState<IControls>({} as IControls);
+
+  useEffect(() => {
+    setControlsText(TextService.controls);
+  }, []);
+
   const clickBg = (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     onClose && onClose();
     event.stopPropagation();
@@ -43,6 +49,7 @@ export const Dialog = ({
         <span
           onClick={() => onClose && onClose()}
           className="fa fa-close"
+          title={controlsText.close}
         ></span>
         {title && (
           <div className="dialog-title" v-if="title">
@@ -58,10 +65,14 @@ export const Dialog = ({
         </div>
         {(showOkButton || showCancelButton) && (
           <div className="dialog-footer">
-            <Button onClick={() => onOk && onOk()} state={isLoading ? 3 : 1}>
+            <Button onClick={() => onOk && onOk()} isLoading={isLoading}>
               {okButtonText || controlsText.ok}
             </Button>
-            <Button onClick={() => onCancel && onCancel()} role="secondary">
+            <Button
+              onClick={() => onCancel && onCancel()}
+              role="secondary"
+              isLoading={isLoading}
+            >
               {cancelButtonText || controlsText.cancel}
             </Button>
           </div>

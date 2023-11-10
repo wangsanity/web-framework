@@ -9,7 +9,6 @@ export interface ButtonProps
   > {
   isLoading?: boolean;
   role?: 'primary' | 'secondary';
-  state?: 1 | 2 | 3;
   size?: 'small' | '';
 }
 
@@ -19,7 +18,6 @@ export const Button = ({
   children,
   className,
   role,
-  state = 1,
   size,
   onClick,
   ...props
@@ -28,7 +26,6 @@ export const Button = ({
     <span className="ctr-button">
       <button
         type="button"
-        disabled={state > 1 ? true : false}
         className={[
           'btn',
           role ? 'btn-' + role : '',
@@ -36,9 +33,10 @@ export const Button = ({
           size ? 'btn-' + size : '',
         ].join(' ')}
         onClick={(e) => onClick && onClick(e)}
+        disabled={disabled || isLoading}
         {...props}
       >
-        {state === 3 && (
+        {isLoading && (
           <span className={'icon-box'}>
             <Image
               className="icon-loading"
@@ -46,6 +44,7 @@ export const Button = ({
               alt=""
               width="20"
               height="20"
+              data-testid="spinner"
             />
           </span>
         )}

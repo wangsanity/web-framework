@@ -26,6 +26,10 @@ export const TreeNode = ({
 
   const onSelectItem = (menu: TreeNodeItem) => {
     selectItem && selectItem(menu);
+    if (!menu.url) {
+      menu.checked = !menu.checked;
+      setNodes([...nodes]);
+    }
   };
 
   const onExpand = (menu: TreeNodeItem, expanded: boolean) => {

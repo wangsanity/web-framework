@@ -30,7 +30,7 @@ export const ComSearch = ({ searchEvent, isLoading }: ComSearchProps) => {
         </span>
       </span>
       <span className="search-item">
-        <Button state={isLoading ? 3 : 1} onClick={onSearch}>
+        <Button isLoading={isLoading} onClick={onSearch}>
           {controlsText.search}
         </Button>
       </span>

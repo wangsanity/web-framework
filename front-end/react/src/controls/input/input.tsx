@@ -37,7 +37,7 @@ export const Input = ({
         <span className="error-message">{errorMessage}</span>
       ) : null}
       {showClearButton && value ? (
-        <i className="fa fa-close" onClick={() => clickClear()}></i>
+        <i className="fa fa-close" onClick={() => clickClear()} data-testid="clearBtn"></i>
       ) : null}
     </span>
   );

@@ -83,7 +83,7 @@ export default function Password() {
           </span>
         </div>
         <div className="button-row">
-          <Button state={isLoading ? 3 : 1} onClick={onSave}>
+          <Button isLoading={isLoading} onClick={onSave}>
             {controlsText.save}
           </Button>
           <Button role="secondary" onClick={onReset}>
