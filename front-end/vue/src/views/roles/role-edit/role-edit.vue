@@ -29,7 +29,7 @@
     </div>
     <div class="button-row">
       <ctr-button
-        :state="loading?3:1"
+        :isLoading="loading"
         :text="controls.save"
         @clickEvent="onSave"></ctr-button>
       <ctr-button

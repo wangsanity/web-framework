@@ -3,11 +3,11 @@ import { defineComponent } from 'vue';
 export default defineComponent({
   emits: ['clickEvent'],
   props: {
-    /**
-     * 1: normal, 2: disabled, 3: loading
-     */
-    state: {
-      default: 1
+    disabled: {
+      default: false
+    },
+    isLoading: {
+      default: false
     },
     text: {
       default: ''
@@ -27,7 +27,7 @@ export default defineComponent({
   },
   methods: {
     onClick() {
-      if (this.state !== 1) {
+      if (this.disabled || this.isLoading) {
         return;
       }
       this.$emit('clickEvent');

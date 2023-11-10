@@ -26,11 +26,11 @@
         </div>
         <div class="button-row">
           <ctr-button
-            :state="loading?3:1"
+            :isLoading="loading"
             :text="controls.login"
             @clickEvent="login"></ctr-button>
           <ctr-button
-            :state="loading?2:1"
+            :isLoading="loading"
             :text="controls.reset"
             @clickEvent="reset"></ctr-button>
         </div>

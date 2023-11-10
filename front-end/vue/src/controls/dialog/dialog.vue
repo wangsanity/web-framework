@@ -11,7 +11,7 @@
         <slot></slot>
       </div>
       <div class="dialog-footer" v-if="showOkButton || showCancelButton">
-        <ctr-button @clickEvent="onOk" :text="okButtonText" :state="loading ? 3 : 1"></ctr-button>
+        <ctr-button @clickEvent="onOk" :text="okButtonText" :isLoading="loading"></ctr-button>
         <ctr-button @clickEvent="onCancel" :text="cancelButtonText" type="secondary"></ctr-button>
       </div>
       <slot name="footer"></slot>

@@ -10,7 +10,7 @@
     <ctr-loading :absolute="true" v-else></ctr-loading>
     <div class="button-row">
       <ctr-button
-        :state="saving?3:1"
+        :isLoading="loading"
         :text="controls.save"
         @clickEvent="onSave"></ctr-button>
       <ctr-button

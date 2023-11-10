@@ -12,7 +12,7 @@
     <span class="search-item">
       <ctr-button
         :text="controls.search"
-        :state="loading?3:1"
+        :isLoading="loading"
         @clickEvent="onSearch"></ctr-button>
     </span>
   </div>

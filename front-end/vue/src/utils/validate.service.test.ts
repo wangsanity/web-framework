@@ -20,4 +20,14 @@ describe('ValidateService', () => {
       expect(ValidateService.checkCellphone('010-51829328')).toBe(false);
     });
   });
+
+  describe('checkSpecial', () => {
+    it('should return true if not includes special charactars', () => {
+      expect(ValidateService.checkSpecial('12adfsdfADF')).toBe(true);
+    });
+
+    it('should return false if include special charactars', () => {
+      expect(ValidateService.checkCellphone('*&sa13')).toBe(false);
+    });
+  });
 });
