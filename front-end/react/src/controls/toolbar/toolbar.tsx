@@ -1,5 +1,6 @@
-import React from 'react';
-import { useAppState } from '../../contexts/app-context';
+import React, { useEffect, useState } from 'react';
+import { TextService } from '@/utils';
+import { IControls } from '@/constants/texts/controls.i';
 import './toolbar.scss';
 
 export interface ToolbarProps {
@@ -17,7 +18,12 @@ export const Toolbar = ({
   },
   clickEvent,
 }: ToolbarProps) => {
-  const { controlsText } = useAppState();
+  const [controlsText, setControlsText] = useState<IControls>({} as IControls);
+
+  useEffect(() => {
+    setControlsText(TextService.controls);
+  }, []);
+
   const onClick = (buttonName: string) => {
     clickEvent && clickEvent(buttonName);
   };

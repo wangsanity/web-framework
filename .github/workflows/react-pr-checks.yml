@@ -52,6 +52,11 @@ jobs:
           yarn lint
 
       - if: steps.changes.outputs.ui == 'true'
+        name: Run unit tests
+        run: |
+          npm run test
+
+      - if: steps.changes.outputs.ui == 'true'
         name: Run build
         run: |
           yarn build

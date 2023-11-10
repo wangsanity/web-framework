@@ -7,6 +7,7 @@ export interface IControls {
   cellphone: string;
   checkAll: string;
   city: string;
+  close: string;
   confirm: string;
   delete: string;
   department: string;

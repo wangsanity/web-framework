@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Dialog } from '..';
-import { useAppState } from '@/contexts/app-context';
+import { TextService } from '@/utils';
+import { IControls } from '@/constants/texts/controls.i';
 
 export interface ConfirmDialogProps {
   visible?: boolean;
@@ -29,7 +30,12 @@ export const ConfirmDialog = ({
   onClose,
   isLoading,
 }: ConfirmDialogProps) => {
-  const { controlsText } = useAppState();
+  const [controlsText, setControlsText] = useState<IControls>({} as IControls);
+
+  useEffect(() => {
+    setControlsText(TextService.controls);
+  }, []);
+
 
   return (
     <Dialog

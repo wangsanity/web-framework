@@ -9,6 +9,7 @@ export const ENUSCONTROLS: IControls = {
   cellphone: 'Cellphone',
   checkAll: 'Check all',
   city: 'City',
+  close: 'Close',
   confirm: 'Confirm',
   delete: 'Delete',
   department: 'Department',

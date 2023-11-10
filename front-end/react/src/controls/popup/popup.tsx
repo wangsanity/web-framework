@@ -39,7 +39,7 @@ export const Popup = ({
 
   useEffect(() => {
     updatePosition();
-    
+
     const onClickBody = () => {
       setShowPopup(false);
     };
@@ -66,7 +66,7 @@ export const Popup = ({
   };
 
   return (
-    <div className="ctr-popup-menu">
+    <div className="ctr-popup-menu" data-testid="popup">
       <div
         id={slotWrapperId}
         className="slot-wrapper"
@@ -75,7 +75,11 @@ export const Popup = ({
         {children}
       </div>
       {showPopup ? (
-        <div className="popup-content" style={styleObject}>
+        <div
+          className="popup-content"
+          style={styleObject}
+          data-testid="popup-content"
+        >
           {popupContent}
         </div>
       ) : null}

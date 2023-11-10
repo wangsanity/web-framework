@@ -85,7 +85,7 @@ export const RoleEdit = ({ item = {}, saveEvent, cancelEvent }: RoleEditProps) =
         </span>
       </div>
       <div className="button-row">
-        <Button state={isLoading ? 3 : 1} onClick={onSave.bind(this)}>
+        <Button isLoading={isLoading} onClick={onSave.bind(this)}>
           {controlsText.save}
         </Button>
         <Button role="secondary" onClick={onCancel.bind(this)}>

@@ -45,11 +45,11 @@ export const PopupMenu = ({
 
   useEffect(() => {
     updatePosition();
-    
+
     const onClickBody = () => {
       setShowPopup(false);
     };
-  
+
     window.addEventListener('click', onClickBody);
 
     return () => {
@@ -88,7 +88,7 @@ export const PopupMenu = ({
   ));
 
   return (
-    <div className="ctr-popup-menu">
+    <div className="ctr-popup-menu" data-testid="popup-menu">
       <div
         id={slotWrapperId}
         className="slot-wrapper"
@@ -97,7 +97,11 @@ export const PopupMenu = ({
         {children}
       </div>
       {showPopup ? (
-        <div className="list-wrapper" style={styleObject}>
+        <div
+          className="list-wrapper"
+          style={styleObject}
+          data-testid="popup-menu-content"
+        >
           {menus}
         </div>
       ) : null}
