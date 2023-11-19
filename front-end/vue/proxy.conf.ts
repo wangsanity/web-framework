@@ -13,7 +13,7 @@ const PROXY_CONFIG_PROD = {
 
 const PROXY_CONFIG_MOCK = {
   '/api': {
-    target: 'http://localhost:5173/',
+    target: 'http://localhost:3100/',
     secure: false,
     changeOrigin: false,
     rewrite: (path) => {
@@ -57,7 +57,7 @@ const PROXY_CONFIG_MOCK = {
       });
     }
   }
-};console.log(['mock'].indexOf(String(process.env.API_ENV)) > -1);
+};
 
 if (['mock'].indexOf(String(process.env.API_ENV)) > -1) {
   module.exports = PROXY_CONFIG_MOCK;
