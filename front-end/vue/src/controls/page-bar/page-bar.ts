@@ -12,51 +12,63 @@ export default defineComponent({
     listenChange() {
       const { pageSize, pageIndex, itemCount } = this.$props;
       return { pageSize, pageIndex, itemCount };
-    }
+    },
   },
   props: {
     pageSize: {
-      default: 20
+      default: 20,
     },
     pageIndex: {
-      default: 1
+      default: 1,
     },
     pageCount: {
-      default: 0
+      default: 0,
     },
     itemCount: {
-      default: 0
-    }
+      default: 0,
+    },
   },
   data() {
     return {
       itemInfo: '',
       next: 0,
       next2: 0,
-      pageOptions: { itemCount: 0, pageCount: 0, pageIndex: 1, pageSize: 20 } as PageBarOptions,
+      pageOptions: {
+        itemCount: 0,
+        pageCount: 0,
+        pageIndex: 1,
+        pageSize: 20,
+      } as PageBarOptions,
       pageNumber: '' as number | string,
       pageSizes: [10, 20, 50, 100, 500],
       pageInfo: '',
       pre: 0,
-      pre2: 0
+      pre2: 0,
     };
   },
-  methods: {
-    created() {
-      this.$watch('listenChange', () => {
-        this.initiatize();
-      });
+  created() {
+    this.$watch('listenChange', () => {
       this.initiatize();
-    },
+    });
+    this.initiatize();
+  },
+  methods: {
     initiatize() {
-      if ((this.$props as any).options) {
-        this.pageOptions = { ...(this.$props as any).options };
-        if (!this.pageOptions.pageSize) {
-          this.pageOptions.pageSize = 20;
-        }
-        if (this.pageOptions.pageIndex === undefined) {
-          this.pageOptions.pageIndex = 1;
-        }
+      const { pageIndex, pageSize, itemCount } = this.$props;
+      if (!pageSize) {
+        return;
+      }
+
+      this.pageOptions = {
+        pageIndex,
+        pageSize,
+        itemCount,
+      };
+      if (!this.pageOptions.pageSize) {
+        this.pageOptions.pageSize = 20;
+      }
+      if (this.pageOptions.pageIndex === undefined) {
+        this.pageOptions.pageIndex = 1;
       }
       this.updatePage(Number(this.pageOptions.pageIndex));
     },
@@ -101,7 +113,9 @@ export default defineComponent({
       } else {
         this.pageOptions.pageIndex = currentPage;
       }
-      this.pageOptions.pageCount = Math.ceil(this.pageOptions.itemCount / pageSize);
+      this.pageOptions.pageCount = Math.ceil(
+        this.pageOptions.itemCount / pageSize
+      );
       this.pageInfo =
         this.pageOptions.itemCount === 0
           ? '0/0'
@@ -114,7 +128,12 @@ export default defineComponent({
       this.itemInfo =
         this.pageOptions.itemCount === 0
           ? '0/0'
-          : current * pageSize + 1 + '-' + to + ' / ' + this.pageOptions.itemCount;
+          : current * pageSize +
+            1 +
+            '-' +
+            to +
+            ' / ' +
+            this.pageOptions.itemCount;
 
       this.pre = Number(this.pageOptions.pageIndex) - 1;
       this.pre2 = Number(this.pageOptions.pageIndex) - 2;
@@ -126,6 +145,6 @@ export default defineComponent({
       if (event.target.value) {
         this.selectPage(1, true);
       }
-    }
-  }
+    },
+  },
 });
