@@ -50,6 +50,10 @@ export default defineComponent({
     fullCode: {
       default: ''
     },
+    showArea: {
+      type: Boolean,
+      default: true
+    },
     /**
      * if true toolbar will be hidden, after selecting area will close it automatically
      */
@@ -249,6 +253,9 @@ export default defineComponent({
       );
 
       this.currentArea = this.currentAreas[0];
+      if (!this.$props.showArea && this.$props.autoClose) {
+        this.onConfirm();
+      }
     },
     selectArea(item: Area) {
       this.currentArea = item;
@@ -260,9 +267,13 @@ export default defineComponent({
       const result = {
         province: this.currentProvince,
         city: this.currentCity,
-        area: null as null | Area
+        area: null as null | Area,
+        code: this.currentCity?.code
       };
-      result.area = this.currentArea;
+      if (this.$props.showArea) {
+        result.area = this.currentArea;
+        result.code = this.currentArea?.code;
+      }
       this.$emit('confirmEvent', result);
       this.displayPopup = false;
     },
@@ -277,21 +288,26 @@ export default defineComponent({
           '-'
         );
         this.styles = {
-          [position[0] || 'top']: slot.offsetHeight + 3 + 'px',
-          [position[1] || 'left']: 0,
+          [position[0] === 'top' ? 'bottom' : 'top']: slot.offsetHeight + 3 + 'px',
+          [position[1] === 'left' ? 'right' : 'left']: this.$props.position && position[1] ? '100%' : 0,
           width: this.$props.width || '260px'
         };
       });
     },
     // TODO: calculate the best position
     getAutoPosition(): string {
-      return 'top-left';
+      return 'bottom-left';
     },
     onClickSlot() {
       // execute after body click propagation
       if (!this.displayPopup) {
         setTimeout(() => {
           this.displayPopup = true;
+
+          setTimeout(() => {
+            const selectedNodes = document.querySelectorAll('.city-picker-content .selected-item') || [];
+            selectedNodes.forEach((node) => node.scrollIntoView())
+          });
         });
       }
     },

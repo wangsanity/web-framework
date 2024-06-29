@@ -32,6 +32,7 @@ export interface CityPickerResult {
   province?: Province | null;
   city?: City | null;
   area?: Area | null;
+  code?: string | null;
 }
 
 export interface CityPickerProps {
@@ -42,6 +43,7 @@ export interface CityPickerProps {
   confirmEvent?: (result: CityPickerResult) => void;
   cancelEvent?: () => void;
   autoClose?: boolean;
+  showArea?: boolean;
   position?: string;
   width?: string;
   addressCode?: string;
@@ -57,6 +59,7 @@ export const CityPicker = ({
   confirmButtonText,
   cancelButtonText,
   addressCode,
+  showArea = true,
 }: CityPickerProps) => {
   const [controlsText, setControlsText] = useState<IControls>({} as IControls);
   const allProvinces = Provinces;
@@ -70,6 +73,7 @@ export const CityPicker = ({
   const [currentCity, setCurrentCity] = useState<City | null>(null);
   const [currentArea, setCurrentArea] = useState<Area | null>(null);
   const [citySlotId, setCitySlotId] = useState('');
+  const [emitResult, setEmitResult] = useState(0);
 
   useEffect(() => {
     setControlsText(TextService.controls);
@@ -84,8 +88,8 @@ export const CityPicker = ({
       const slot = document.getElementById(citySlotId);
       const newPosition = (position || getAutoPosition()).split('-');
       setStyleObject({
-        [newPosition[0] || 'top']: (slot ? slot.offsetHeight : 0) + 3 + 'px',
-        [newPosition[1] || 'left']: 0,
+        [newPosition[0] === 'top' ? 'bottom' : 'top']: (slot ? slot.offsetHeight : 0) + 3 + 'px',
+        [newPosition[1] === 'left' ? 'right' : 'left']: position && newPosition[1] ? '100%' : 0,
         width: width || '260px',
       });
     });
@@ -173,12 +177,8 @@ export const CityPicker = ({
     setCurrentCity(city);
     setCurrentAreas(currentAreas);
     setCurrentArea(currentAreas[0]);
-  };
-
-  const selectArea = (item: Area) => {
-    setCurrentArea(item);
-    if (autoClose) {
-      onConfirm();
+    if (!showArea && autoClose) {
+      setEmitResult(emitResult + 1);
     }
   };
 
@@ -186,10 +186,28 @@ export const CityPicker = ({
     const result: CityPickerResult = {
       province: currentProvince,
       city: currentCity,
+      code: String(currentCity?.code),
     };
-    result.area = currentArea;
+    if (showArea) {
+      result.area = currentArea;
+      result.code = String(currentArea?.code);
+    }
     confirmEvent && confirmEvent(result);
     setDisplayPopup(false);
+  };
+
+  useEffect(() => {
+    if (emitResult > 0) {
+      onConfirm();
+    }
+    // eslint-disable-next-line
+  }, [emitResult]);
+
+  const selectArea = (item: Area) => {
+    setCurrentArea(item);
+    if (autoClose) {
+      setEmitResult(emitResult + 1);
+    }
   };
 
   const onCancel = () => {
@@ -199,13 +217,18 @@ export const CityPicker = ({
 
   // TODO: calculate the best position
   const getAutoPosition = () => {
-    return 'top-left';
+    return 'bottom-left';
   };
 
   const onClickSlot = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     if (!displayPopup) {
       setDisplayPopup(true);
       e.stopPropagation();
+
+      setTimeout(() => {
+        const selectedNodes = document.querySelectorAll('.city-picker-content .selected-item') || [];
+        selectedNodes.forEach((node) => node.scrollIntoView())
+      });
     }
   };
 
@@ -232,7 +255,7 @@ export const CityPicker = ({
                 {controlsText.province}
               </div>
               <div className="data-title city-title">{controlsText.city}</div>
-              <div className="data-title town-title">{controlsText.town}</div>
+              {showArea && <div className="data-title area-title">{controlsText.town}</div>}
             </div>
             <div className="data-area">
               <div className="province-box">
@@ -269,22 +292,24 @@ export const CityPicker = ({
                   </div>
                 ))}
               </div>
-              <div className="area-box">
-                {currentAreas.map((item, index) => (
-                  <div
-                    className="item-box"
-                    onClick={() => selectArea(item)}
-                    key={index}
-                  >
-                    <span
-                      title={item.name}
-                      className={item === currentArea ? 'selected-item' : ''}
+              {showArea && (
+                <div className="area-box">
+                  {currentAreas.map((item, index) => (
+                    <div
+                      className="item-box"
+                      onClick={() => selectArea(item)}
+                      key={index}
                     >
-                      {item.name}
-                    </span>
-                  </div>
-                ))}
-              </div>
+                      <span
+                        title={item.name}
+                        className={item === currentArea ? 'selected-item' : ''}
+                      >
+                        {item.name}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              )}
             </div>
             {!autoClose && (
               <div className="tool-bar">

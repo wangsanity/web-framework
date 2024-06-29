@@ -6,7 +6,7 @@
         <div class="title-box">
           <div class="data-title province-title">{{controls.province}}</div>
           <div class="data-title city-title">{{controls.city}}</div>
-          <div class="data-title town-title">{{controls.town}}</div>
+          <div class="data-title area-title" v-if="showArea">{{controls.town}}</div>
         </div>
         <div class="data-area">
           <div class="province-box">
@@ -19,7 +19,7 @@
               <span :title="item.name" :class="item==currentCity?'selected-item':''">{{item.name}}</span>
             </div>
           </div><!--
-        --><div class="area-box">
+        --><div class="area-box" v-if="showArea">
             <div class="item-box" @click="selectArea(item)" v-for="(item, index) in currentAreas" :key="index">
               <span :title="item.name" :class="item==currentArea?'selected-item':''">{{item.name}}</span>
             </div>
